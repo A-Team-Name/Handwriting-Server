@@ -9,8 +9,6 @@ app = Flask(__name__)
 
 inferer = Inferer()
 
-print("inferer started")
-
 @app.route("/translate", methods=["POST"])
 def convert_to_text():
     file = request.files["image"]
@@ -22,4 +20,4 @@ def convert_to_text():
     return jsonify({'msg': response, "size": [img.width, img.height]})
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host="0.0.0.0")
