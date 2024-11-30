@@ -10,7 +10,9 @@ WORKDIR /app
 
 COPY . .
 
-RUN pip3 install poetry
+RUN pip install poetry
+
+RUN poetry env use 3.11
 
 RUN poetry config virtualenvs.create false
 
