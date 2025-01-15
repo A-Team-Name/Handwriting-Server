@@ -1,23 +1,24 @@
-FROM nvidia/cuda:12.4.1-cudnn-devel-ubuntu22.04
+FROM nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu22.04
 
-RUN apt-get update && apt-get install --no-install-recommends --no-install-suggests -y curl
+RUN apt-get update && apt-get install --no-install-recommends --no-install-suggests -y \
+    python3.11 \
+    python3-pip \
+    python3.11-venv \
+    curl && \
+    pip install poetry && \
+    apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /root/.cache /tmp/* /usr/share/doc/* /usr/share/man/* /usr/share/locale/* /usr/share/info/*
 
-RUN apt-get -y install python3.11 python3-pip
-
-RUN ln -s /usr/bin/python3.11 /usr/bin/python
 
 WORKDIR /app
 
-COPY . .
+COPY pyproject.toml poetry.lock app.py load_model.py inference.py /app/
 
-RUN pip install poetry
+RUN poetry config virtualenvs.create false && \
+    poetry install && \
+    rm -rf /root/.cache
 
-RUN poetry env use 3.11
+# RUN poetry run python3 load_model.py
 
-RUN poetry config virtualenvs.create false
-
-RUN poetry install
-
-RUN poetry run python load_model.py
-
-CMD ["poetry", "run", "python", "app.py"]
+CMD ["poetry", "run", "python3", "app.py"]

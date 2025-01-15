@@ -3,6 +3,8 @@ from PIL import Image
 
 from inference import Inferer
 
+from torch import cuda
+
 print("Startup")
 
 app = Flask(__name__)
@@ -18,6 +20,10 @@ def convert_to_text():
     response = inferer.process_image(img)
 
     return jsonify({'msg': response, "size": [img.width, img.height]})
+
+@app.route("/test", methods=["GET"])
+def test_gpu():
+    return jsonify({'msg': cuda.is_available()})
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0")
