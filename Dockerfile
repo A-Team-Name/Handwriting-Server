@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install --no-install-recommends --no-install-sugge
 
 WORKDIR /app
 
-COPY pyproject.toml poetry.lock app.py load_model.py /app/
+COPY pyproject.toml poetry.lock app.py load_model.py entrypoint.sh /app/
 
 COPY /models /app/models
 
