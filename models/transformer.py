@@ -1,12 +1,14 @@
+from .inference import Inferer
+
 from transformers import TrOCRProcessor, VisionEncoderDecoderModel
 from PIL import Image
 
-class Inferer:
-    def __init__(self):
+class TransformerInferer(Inferer):
+    def __init__(self, processor_name, model_name):
         print("loading Processor")
-        self.processor = TrOCRProcessor.from_pretrained("microsoft/trocr-base-handwritten")
+        self.processor = TrOCRProcessor.from_pretrained(processor_name)
         print("loading model")
-        self.model = VisionEncoderDecoderModel.from_pretrained("microsoft/trocr-base-handwritten")
+        self.model = VisionEncoderDecoderModel.from_pretrained(model_name)
 
     def process_image(self, img: Image.Image) -> str:
         pixel_values = self.processor(img.convert("RGB"), return_tensors="pt").pixel_values

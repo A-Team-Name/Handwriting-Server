@@ -13,7 +13,9 @@ RUN apt-get update && apt-get install --no-install-recommends --no-install-sugge
 
 WORKDIR /app
 
-COPY pyproject.toml poetry.lock app.py load_model.py inference.py /app/
+COPY pyproject.toml poetry.lock app.py load_model.py /app/
+
+COPY /models /app/models
 
 RUN poetry config virtualenvs.create false && \
     poetry install && \
@@ -21,4 +23,4 @@ RUN poetry config virtualenvs.create false && \
 
 # RUN poetry run python3 load_model.py
 
-CMD ["poetry", "run", "python3", "app.py"]
+ENTRYPOINT ["/bin/sh", "./entrypoint.sh"]
