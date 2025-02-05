@@ -1,17 +1,18 @@
-from .onnx import OnnxInferer
+from .onnx import OnnxModel
+from ..output import Output
 
 from PIL import Image
 import onnxruntime
 import numpy as np
 import os
 
-class HelloWorldInferer(OnnxInferer):
+class HelloWorldModel(OnnxModel):
     def __init__(self):
         current_dir = os.path.dirname(__file__)
         model_path = os.path.join(current_dir, 'onnx/hello_world.onnx')
         super().__init__(model_path)
     
-    def process_image(self, img: Image.Image) -> str:
+    def predict(self, img: Image.Image) -> Output:
         new_img = np.random.random(
             (
                 1,  # batch: stack as many images as you like here
@@ -21,4 +22,4 @@ class HelloWorldInferer(OnnxInferer):
             )
         ).astype(np.float32)
         
-        return super().process_image(new_img)
+        return super().predict(new_img)
