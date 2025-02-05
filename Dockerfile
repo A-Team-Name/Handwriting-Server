@@ -5,6 +5,7 @@ RUN apt-get update && apt-get install --no-install-recommends --no-install-sugge
     python3-pip \
     python3.11-venv \
     curl && \
+    ln -s /usr/bin/python3.11 /usr/bin/python && \
     pip install poetry && \
     apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false && \
     apt-get clean && \

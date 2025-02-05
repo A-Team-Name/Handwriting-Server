@@ -4,7 +4,10 @@ import numpy as np
 from flask import Flask, request, jsonify
 from PIL import Image
 
-from models import INFERER_TYPES, Inferer
+from models import Inferer
+from models.output import Output
+from models.models import HelloWorldModel
+from models.preprocessors import LinePreprocessor
 
 from torch import cuda
 
@@ -12,17 +15,23 @@ print("Startup")
 
 app = Flask(__name__)
 
-inferer: Inferer = INFERER_TYPES[os.getenv("INFERER_TYPE")]()
+inferer: Inferer = Inferer(HelloWorldModel(), LinePreprocessor())
 
 @app.route("/translate", methods=["POST"])
 def convert_to_text():
+    print(request.files, flush=True)
     file = request.files["image"]
 
-    img = np.asarray(Image.open(file.stream).convert("L"))
+    img = np.asarray(Image.open(file).convert("L"))
 
-    response = inferer.process_image(img)
+    response: Output = inferer.process_image(img)
+    
+    response_dict = {
+        "top_preds": response.top_preds,
+        "top_probs": response.top_probs
+    }
 
-    return jsonify(response)
+    return jsonify(response_dict)
 
 @app.route("/test", methods=["GET"])
 def test_gpu():
