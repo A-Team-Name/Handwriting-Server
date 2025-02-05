@@ -1,5 +1,6 @@
 services:
   test:
+    container_name: hwserver
     build:
       context: .
       dockerfile: Dockerfile
@@ -9,6 +10,8 @@ services:
       - .env
     volumes:
       - .:/app
+    networks:
+      - kernel_bridge
     deploy:
       resources:
         reservations:
@@ -16,3 +19,7 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [gpu]
+
+networks:
+  kernel_bridge:
+    external: true
