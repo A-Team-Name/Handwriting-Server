@@ -1,6 +1,6 @@
 #!/bin/sh
 if [ "$FLASK_ENV" = "development" ]; then
-    poetry run python ./app.py
+    flask --app app run --debug --host=0.0.0.0 --port=$HANDWRITING_PORT
 else
-    poetry run gunicorn --bind 0.0.0.0:$HANDWRITING_PORT app:app
+    gunicorn --bind 0.0.0.0:$HANDWRITING_PORT app:app
 fi
