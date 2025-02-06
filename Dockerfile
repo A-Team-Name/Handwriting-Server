@@ -24,7 +24,7 @@ RUN poetry config virtualenvs.create false && \
 
 COPY app.py app.py
 COPY load_model.py load_model.py
-COPY entrypoint.sh entrypoiny.sh
+COPY entrypoint.sh entrypoint.sh
 COPY models/ /app/models
 
 
