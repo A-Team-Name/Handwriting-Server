@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install --no-install-recommends --no-install-sugge
     python3.11-venv \
     curl && \
     ln -s /usr/bin/python3.11 /usr/bin/python && \
+    pip install --upgrade pip && \
     pip install poetry && \
     apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false && \
     apt-get clean && \
@@ -14,13 +15,18 @@ RUN apt-get update && apt-get install --no-install-recommends --no-install-sugge
 
 WORKDIR /app
 
-COPY pyproject.toml poetry.lock app.py load_model.py entrypoint.sh /app/
-
-COPY /models /app/models
+COPY pyproject.toml pyproject.toml
+COPY poetry.lock poetry.lock
 
 RUN poetry config virtualenvs.create false && \
     poetry install && \
     rm -rf /root/.cache
+
+COPY app.py app.py
+COPY load_model.py load_model.py
+COPY entrypoint.sh entrypoiny.sh
+COPY models/ /app/models
+
 
 # RUN poetry run python3 load_model.py
 
