@@ -1,5 +1,10 @@
 FROM nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu22.04
 
+RUN apt-get update && apt-get install wget --no-install-recommends --no-install-suggests -y && \
+    wget -O apl.deb https://www.dyalog.com/uploads/php/download.dyalog.com/download.php?file=19.0/linux_64_19.0.50027_unicode.x86_64.deb && \
+    dpkg -i apl.deb && \
+    rm apl.deb
+
 RUN apt-get update && apt-get install --no-install-recommends --no-install-suggests -y \
     python3.11 \
     python3-pip \
