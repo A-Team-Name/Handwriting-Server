@@ -2,7 +2,8 @@ from .model import Model
 from ..output import Output
 
 from transformers import TrOCRProcessor, VisionEncoderDecoderModel
-from PIL import Image
+import numpy as np
+import numpy.typing as npt
 
 class TransformerModel(Model):
     """
@@ -23,17 +24,17 @@ class TransformerModel(Model):
         self.processor = TrOCRProcessor.from_pretrained(processor_name)
         self.model = VisionEncoderDecoderModel.from_pretrained(model_name)
 
-    def predict(self, img: Image.Image) -> Output:
+    def predict(self, img: npt.NDArray[np.ubyte]) -> Output:
         """
         Perform inference on the given image
 
         Args:
-            img (Image.Image): The image to perform inference on
+            img (npt.NDArray[np.ubyte]): The image to perform inference on
 
         Returns:
             str: The output of the model
         """
-        pixel_values = self.processor(img.convert("RGB"), return_tensors="pt").pixel_values
+        pixel_values = self.processor(Image.fromarray(img, 'L').convert("RGB"), return_tensors="pt").pixel_values
         generated_ids = self.model.generate(pixel_values)
 
         return self.processor.batch_decode(generated_ids, skip_special_tokens=True)[0]
