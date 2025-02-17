@@ -6,7 +6,7 @@ from PIL import Image
 
 from models import Inferer
 from models.output import Output
-from models.models import HelloWorldModel
+from models.models import TransformerModel
 from models.preprocessors import LinePreprocessor
 
 from torch import cuda
@@ -15,7 +15,7 @@ print("Startup")
 
 app = Flask(__name__)
 
-inferer: Inferer = Inferer(HelloWorldModel(), LinePreprocessor())
+inferer: Inferer = Inferer(TransformerModel("MrFitzmaurice/TrOCR-Lambda-Calculus", "MrFitzmaurice/TrOCR-Lambda-Calculus"), LinePreprocessor())
 
 @app.route("/translate", methods=["POST"])
 def convert_to_text():
