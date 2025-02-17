@@ -20,13 +20,25 @@ class ShapeContextsModel(Model):
         with open('img.bytes', 'w') as file:
             img.tofile(file)
 
-        with open('size.txt', 'w') as file:
-            file.write(f'{img.shape[0]} {img.shape[1]}\n')
+        with open('shape-contexts.json5', 'w') as file:
+            file.write( '{\n')
+            file.write(f'    size: [{img.shape[0]}, {img.shape[1]}],\n')
+            file.write(f'    path: "img.bytes",\n')
+            file.write( '}\n')
 
-        # completed_process = subprocess.run(
-        #     'dyalogscript', 'shape.apl',
-        #     capture_output = True,
-        # )
+        completed_process = subprocess.run(
+            ['dyalogscript', 'models/models/shape.apl'],
+            capture_output = True,
+            text           = True,
+        )
 
-        return Output([], [])
+        lines = completed_process.stdout.split('\n')[:-1]
+
+        return Output(
+            list(map(list, zip(*map(list, lines)))),
+            #    │       │ │   │└───────┴─────────── strings to lists of chars
+            #    │       │ └───┴──────────────────── transpose
+            #    └───────┴────────────────────────── tuple → list
+            [], # TODO: this
+        )
 

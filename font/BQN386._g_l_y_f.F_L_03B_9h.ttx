@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ttFont ttLibVersion="4.55">
+  <glyf>
+    <!-- The xMin, yMin, xMax and yMax values
+         will be recalculated by the compiler. -->
+    <TTGlyph name="FL03B9h" xMin="256" yMin="-14" xMax="344" yMax="492">
+      <contour>
+        <pt x="344" y="458" on="1"/>
+        <pt x="344" y="458" on="0"/>
+        <pt x="344" y="22" on="1"/>
+        <pt x="344" y="5" on="0"/>
+        <pt x="332" y="-2" on="1"/>
+        <pt x="318" y="-12" on="0"/>
+        <pt x="302" y="-12" on="1"/>
+        <pt x="258" y="-14" on="0"/>
+        <pt x="258" y="22" on="1"/>
+        <pt x="256" y="458" on="1"/>
+        <pt x="256" y="476" on="0"/>
+        <pt x="272" y="482" on="1"/>
+        <pt x="284" y="492" on="0"/>
+        <pt x="301" y="490" on="1"/>
+        <pt x="344" y="490" on="0"/>
+      </contour>
+      <instructions>
+        <assembly>
+          SVTCA[0]	/* SetFPVectorToAxis */
+          SVTCA[1]	/* SetFPVectorToAxis */
+          PUSHB[ ]	/* 1 value pushed */
+          15
+          MDAP[1]	/* MoveDirectAbsPt */
+          PUSHB[ ]	/* 1 value pushed */
+          8
+          MDRP[10110]	/* MoveDirectRelPt */
+          PUSHB[ ]	/* 2 values pushed */
+          2 9
+          MIRP[01001]	/* MoveIndirectRelPt */
+          PUSHB[ ]	/* 1 value pushed */
+          0
+          SHP[0]	/* ShiftPointByLastPoint */
+          PUSHB[ ]	/* 2 values pushed */
+          2 9
+          MIRP[01001]	/* MoveIndirectRelPt */
+          PUSHB[ ]	/* 1 value pushed */
+          2
+          SRP0[ ]	/* SetRefPoint0 */
+          PUSHB[ ]	/* 1 value pushed */
+          16
+          MDRP[10110]	/* MoveDirectRelPt */
+          PUSHB[ ]	/* 2 values pushed */
+          2 8
+          SRP1[ ]	/* SetRefPoint1 */
+          SRP2[ ]	/* SetRefPoint2 */
+          PUSHB[ ]	/* 1 value pushed */
+          11
+          IP[ ]	/* InterpolatePts */
+          SVTCA[0]	/* SetFPVectorToAxis */
+          IUP[0]	/* InterpolateUntPts */
+          IUP[1]	/* InterpolateUntPts */
+        </assembly>
+      </instructions>
+    </TTGlyph>
+  </glyf>
+</ttFont>

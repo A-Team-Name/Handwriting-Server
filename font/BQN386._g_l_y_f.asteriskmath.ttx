@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ttFont ttLibVersion="4.55">
+  <glyf>
+    <!-- The xMin, yMin, xMax and yMax values
+         will be recalculated by the compiler. -->
+    <TTGlyph name="asteriskmath" xMin="109" yMin="147" xMax="490" yMax="527">
+      <contour>
+        <pt x="490" y="382" on="1"/>
+        <pt x="490" y="367" on="0"/>
+        <pt x="438" y="337" on="1"/>
+        <pt x="421" y="329" on="0"/>
+        <pt x="388" y="311" on="0"/>
+        <pt x="371" y="302" on="1"/>
+        <pt x="376" y="294" on="0"/>
+        <pt x="423" y="250" on="1"/>
+        <pt x="464" y="211" on="0"/>
+        <pt x="464" y="198" on="1"/>
+        <pt x="463" y="188" on="1"/>
+        <pt x="443" y="150" on="0"/>
+        <pt x="421" y="150" on="1"/>
+        <pt x="410" y="150" on="0"/>
+        <pt x="359" y="198" on="1"/>
+        <pt x="340" y="216" on="0"/>
+        <pt x="309" y="246" on="0"/>
+        <pt x="298" y="259" on="1"/>
+        <pt x="284" y="243" on="0"/>
+        <pt x="258" y="212" on="0"/>
+        <pt x="244" y="195" on="1"/>
+        <pt x="203" y="147" on="0"/>
+        <pt x="186" y="147" on="1"/>
+        <pt x="169" y="147" on="0"/>
+        <pt x="143" y="180" on="0"/>
+        <pt x="143" y="197" on="1"/>
+        <pt x="143" y="208" on="0"/>
+        <pt x="181" y="249" on="1"/>
+        <pt x="224" y="293" on="0"/>
+        <pt x="228" y="303" on="1"/>
+        <pt x="211" y="310" on="0"/>
+        <pt x="175" y="329" on="0"/>
+        <pt x="158" y="340" on="1"/>
+        <pt x="109" y="371" on="0"/>
+        <pt x="109" y="394" on="1"/>
+        <pt x="109" y="405" on="0"/>
+        <pt x="117" y="423" on="1"/>
+        <pt x="126" y="441" on="0"/>
+        <pt x="138" y="441" on="1"/>
+        <pt x="148" y="441" on="0"/>
+        <pt x="192" y="414" on="1"/>
+        <pt x="241" y="382" on="0"/>
+        <pt x="253" y="378" on="1"/>
+        <pt x="253" y="480" on="1"/>
+        <pt x="253" y="527" on="0"/>
+        <pt x="294" y="527" on="1"/>
+        <pt x="339" y="527" on="0"/>
+        <pt x="339" y="458" on="1"/>
+        <pt x="339" y="449" on="0"/>
+        <pt x="338" y="417" on="0"/>
+        <pt x="338" y="412" on="1"/>
+        <pt x="338" y="407" on="0"/>
+        <pt x="338" y="397" on="1"/>
+        <pt x="338" y="388" on="0"/>
+        <pt x="339" y="373" on="1"/>
+        <pt x="353" y="376" on="0"/>
+        <pt x="400" y="405" on="1"/>
+        <pt x="443" y="432" on="0"/>
+        <pt x="454" y="432" on="1"/>
+        <pt x="470" y="432" on="0"/>
+        <pt x="481" y="415" on="1"/>
+        <pt x="490" y="400" on="0"/>
+      </contour>
+      <instructions>
+        <assembly>
+          SVTCA[0]	/* SetFPVectorToAxis */
+          PUSHB[ ]	/* 1 value pushed */
+          22
+          MDAP[1]	/* MoveDirectAbsPt */
+          PUSHB[ ]	/* 1 value pushed */
+          12
+          SHP[1]	/* ShiftPointByLastPoint */
+          PUSHB[ ]	/* 5 values pushed */
+          45 8 0 7 4
+          CALL[ ]	/* CallFunction */
+          PUSHB[ ]	/* 5 values pushed */
+          45 8 0 7 4
+          CALL[ ]	/* CallFunction */
+          SVTCA[1]	/* SetFPVectorToAxis */
+          PUSHB[ ]	/* 1 value pushed */
+          62
+          MDAP[1]	/* MoveDirectAbsPt */
+          PUSHB[ ]	/* 1 value pushed */
+          42
+          MDRP[10110]	/* MoveDirectRelPt */
+          PUSHB[ ]	/* 2 values pushed */
+          52 9
+          MIRP[01001]	/* MoveIndirectRelPt */
+          PUSHB[ ]	/* 1 value pushed */
+          52
+          SRP0[ ]	/* SetRefPoint0 */
+          PUSHB[ ]	/* 1 value pushed */
+          63
+          MDRP[10110]	/* MoveDirectRelPt */
+          PUSHB[ ]	/* 1 value pushed */
+          54
+          SMD[ ]	/* SetMinimumDistance */
+          PUSHW[ ]	/* 3 values pushed */
+          -12224 -10909 21
+          CALL[ ]	/* CallFunction */
+          SPVFS[ ]	/* SetPVectorFromStack */
+          SFVTPV[ ]	/* SetFVectorToPVector */
+          PUSHB[ ]	/* 1 value pushed */
+          17
+          SRP0[ ]	/* SetRefPoint0 */
+          PUSHB[ ]	/* 1 value pushed */
+          15
+          MDRP[00000]	/* MoveDirectRelPt */
+          PUSHB[ ]	/* 2 values pushed */
+          5 16
+          MIRP[11001]	/* MoveIndirectRelPt */
+          PUSHB[ ]	/* 1 value pushed */
+          7
+          MDRP[00000]	/* MoveDirectRelPt */
+          PUSHB[ ]	/* 1 value pushed */
+          17
+          SRP0[ ]	/* SetRefPoint0 */
+          PUSHB[ ]	/* 4 values pushed */
+          16 17 15 19
+          CALL[ ]	/* CallFunction */
+          PUSHB[ ]	/* 3 values pushed */
+          16 17 15
+          DUP[ ]	/* DuplicateTopStack */
+          ROLL[ ]	/* RollTopThreeStack */
+          DUP[ ]	/* DuplicateTopStack */
+          ROLL[ ]	/* RollTopThreeStack */
+          SWAP[ ]	/* SwapTopStack */
+          SPVTL[0]	/* SetPVectorToLine */
+          SFVTPV[ ]	/* SetFVectorToPVector */
+          SRP1[ ]	/* SetRefPoint1 */
+          SRP2[ ]	/* SetRefPoint2 */
+          IP[ ]	/* InterpolatePts */
+          SVTCA[0]	/* SetFPVectorToAxis */
+          PUSHB[ ]	/* 5 values pushed */
+          5 7 17 15 16
+          MDAP[0]	/* MoveDirectAbsPt */
+          MDAP[0]	/* MoveDirectAbsPt */
+          MDAP[0]	/* MoveDirectAbsPt */
+          MDAP[0]	/* MoveDirectAbsPt */
+          MDAP[0]	/* MoveDirectAbsPt */
+          SVTCA[1]	/* SetFPVectorToAxis */
+          PUSHB[ ]	/* 5 values pushed */
+          5 7 17 15 16
+          MDAP[0]	/* MoveDirectAbsPt */
+          MDAP[0]	/* MoveDirectAbsPt */
+          MDAP[0]	/* MoveDirectAbsPt */
+          MDAP[0]	/* MoveDirectAbsPt */
+          MDAP[0]	/* MoveDirectAbsPt */
+          PUSHB[ ]	/* 1 value pushed */
+          64
+          SMD[ ]	/* SetMinimumDistance */
+          SVTCA[1]	/* SetFPVectorToAxis */
+          PUSHB[ ]	/* 2 values pushed */
+          52 42
+          SRP1[ ]	/* SetRefPoint1 */
+          SRP2[ ]	/* SetRefPoint2 */
+          PUSHB[ ]	/* 1 value pushed */
+          45
+          IP[ ]	/* InterpolatePts */
+          SVTCA[0]	/* SetFPVectorToAxis */
+          IUP[0]	/* InterpolateUntPts */
+          IUP[1]	/* InterpolateUntPts */
+        </assembly>
+      </instructions>
+    </TTGlyph>
+  </glyf>
+</ttFont>

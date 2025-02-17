@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ttFont ttLibVersion="4.55">
+  <glyf>
+    <!-- The xMin, yMin, xMax and yMax values
+         will be recalculated by the compiler. -->
+    <TTGlyph name="parenleft" xMin="187" yMin="-103" xMax="412" yMax="742">
+      <contour>
+        <pt x="357" y="734" on="1"/>
+        <pt x="366" y="742" on="0"/>
+        <pt x="377" y="737" on="1"/>
+        <pt x="398" y="728" on="0"/>
+        <pt x="402" y="700" on="1"/>
+        <pt x="403" y="687" on="0"/>
+        <pt x="396" y="678" on="1"/>
+        <pt x="261" y="524" on="0"/>
+        <pt x="263" y="304" on="1"/>
+        <pt x="265" y="86" on="0"/>
+        <pt x="398" y="-40" on="1"/>
+        <pt x="412" y="-51" on="0"/>
+        <pt x="410" y="-66" on="1"/>
+        <pt x="409" y="-79" on="0"/>
+        <pt x="390" y="-99" on="0"/>
+        <pt x="377" y="-101" on="1"/>
+        <pt x="363" y="-103" on="0"/>
+        <pt x="350" y="-92" on="1"/>
+        <pt x="271" y="-30" on="0"/>
+        <pt x="229" y="82" on="1"/>
+        <pt x="209" y="135" on="0"/>
+        <pt x="199" y="194" on="1"/>
+        <pt x="187" y="261" on="0"/>
+        <pt x="188" y="315" on="1"/>
+        <pt x="188" y="371" on="0"/>
+        <pt x="200" y="437" on="1"/>
+        <pt x="223" y="560" on="0"/>
+        <pt x="285" y="653" on="1"/>
+        <pt x="316" y="701" on="0"/>
+      </contour>
+      <instructions>
+        <assembly>
+          SVTCA[0]	/* SetFPVectorToAxis */
+          SVTCA[1]	/* SetFPVectorToAxis */
+          PUSHB[ ]	/* 1 value pushed */
+          29
+          MDAP[1]	/* MoveDirectAbsPt */
+          PUSHB[ ]	/* 1 value pushed */
+          23
+          MDRP[10110]	/* MoveDirectRelPt */
+          PUSHB[ ]	/* 2 values pushed */
+          8 10
+          MIRP[01001]	/* MoveIndirectRelPt */
+          PUSHB[ ]	/* 1 value pushed */
+          8
+          SRP0[ ]	/* SetRefPoint0 */
+          PUSHB[ ]	/* 1 value pushed */
+          30
+          MDRP[10110]	/* MoveDirectRelPt */
+          SVTCA[0]	/* SetFPVectorToAxis */
+          IUP[0]	/* InterpolateUntPts */
+          IUP[1]	/* InterpolateUntPts */
+        </assembly>
+      </instructions>
+    </TTGlyph>
+  </glyf>
+</ttFont>

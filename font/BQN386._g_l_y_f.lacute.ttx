@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ttFont ttLibVersion="4.55">
+  <glyf>
+    <!-- The xMin, yMin, xMax and yMax values
+         will be recalculated by the compiler. -->
+    <TTGlyph name="lacute" xMin="152" yMin="-9" xMax="409" yMax="926">
+      <contour>
+        <pt x="337" y="14" on="1"/>
+        <pt x="337" y="-9" on="0"/>
+        <pt x="295" y="-9" on="1"/>
+        <pt x="251" y="-9" on="0"/>
+        <pt x="251" y="16" on="1"/>
+        <pt x="251" y="604" on="1"/>
+        <pt x="244" y="604" on="0"/>
+        <pt x="226" y="604" on="0"/>
+        <pt x="207" y="604" on="0"/>
+        <pt x="192" y="604" on="0"/>
+        <pt x="180" y="604" on="1"/>
+        <pt x="167" y="604" on="0"/>
+        <pt x="152" y="624" on="0"/>
+        <pt x="153" y="644" on="1"/>
+        <pt x="154" y="688" on="0"/>
+        <pt x="188" y="688" on="1"/>
+        <pt x="275" y="688" on="1"/>
+        <pt x="337" y="688" on="0"/>
+        <pt x="337" y="650" on="1"/>
+      </contour>
+      <contour>
+        <pt x="188" y="759" on="1"/>
+        <pt x="188" y="770" on="0"/>
+        <pt x="196" y="778" on="1"/>
+        <pt x="338" y="926" on="0"/>
+        <pt x="364" y="926" on="1"/>
+        <pt x="381" y="926" on="0"/>
+        <pt x="409" y="897" on="0"/>
+        <pt x="409" y="880" on="1"/>
+        <pt x="409" y="867" on="0"/>
+        <pt x="399" y="857" on="1"/>
+        <pt x="256" y="713" on="0"/>
+        <pt x="234" y="713" on="1"/>
+        <pt x="217" y="713" on="0"/>
+        <pt x="188" y="742" on="0"/>
+      </contour>
+      <instructions>
+        <assembly>
+          SVTCA[0]	/* SetFPVectorToAxis */
+          PUSHB[ ]	/* 3 values pushed */
+          2 1 0
+          CALL[ ]	/* CallFunction */
+          PUSHB[ ]	/* 1 value pushed */
+          10
+          MDAP[1]	/* MoveDirectAbsPt */
+          PUSHB[ ]	/* 2 values pushed */
+          15 4
+          MIRP[01001]	/* MoveIndirectRelPt */
+          SVTCA[1]	/* SetFPVectorToAxis */
+          PUSHB[ ]	/* 1 value pushed */
+          33
+          MDAP[1]	/* MoveDirectAbsPt */
+          PUSHB[ ]	/* 1 value pushed */
+          4
+          MDRP[10110]	/* MoveDirectRelPt */
+          PUSHB[ ]	/* 2 values pushed */
+          0 9
+          MIRP[01001]	/* MoveIndirectRelPt */
+          PUSHB[ ]	/* 1 value pushed */
+          0
+          SRP0[ ]	/* SetRefPoint0 */
+          PUSHB[ ]	/* 1 value pushed */
+          34
+          MDRP[10110]	/* MoveDirectRelPt */
+          SVTCA[0]	/* SetFPVectorToAxis */
+          IUP[0]	/* InterpolateUntPts */
+          IUP[1]	/* InterpolateUntPts */
+        </assembly>
+      </instructions>
+    </TTGlyph>
+  </glyf>
+</ttFont>

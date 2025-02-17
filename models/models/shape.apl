@@ -8,15 +8,13 @@
 cs←'λ.()abcdefghijklmnopqrstuvwxyz'
 Atan2←12○⊣+0J1×⊢ ⍝ x Atan2 y | https://aplcart.info?q=atan2
 
+input←⎕JSON⎕OPT'Dialect' 'JSON5'⊃⎕NGET'shape-contexts.json5'
+
 Load←{
 	⍝ ⍵: ⍬
 	⍝ ←: bitarray
 	tie←⍵ ⎕NTIE 0
-	⍝ 124 877  josh.rgb
-	⍝ 66 236   lambda.png
-	⍝ 200 800  hand-lambda.png
-	⍝ 247 426  leon-lambda.png
-	data←¯1≠(200 800 3⍴⎕NREAD tie 83 ¯1)[;;1]
+	data←¯1≠(input.size⍴⎕NREAD tie 83 ¯1)
 	_←⎕NUNTIE tie
 	data
 }
@@ -242,10 +240,10 @@ npoints←100
 bins←5 12
 sh←npoints,npoints,bins
 font ←npoints DistributeOverCurves¨ Loot ⍬
-input←npoints EdgePoints¨           Split Load 'hand-lambda.rgb'
-Log 'done getting points'
+input←npoints EdgePoints¨           Split Load input.path
+⍝ Log 'done getting points'
 Cost←{
-	⍞←'*'
+	⍝ ⍞←'*'
 	contexts←⍺{.5×+/+/(1 0 2 3⍉sh⍴⍺)(×⍨⍤-÷+)sh⍴⍵}⍥(bins∘Contexts⊃)⍵
 	angles←|⍺∘.-⍥(1∘⊃)⍵
 	c←0.9 0.1(⊃+.×)(⊢÷⌈/⍣2)¨contexts angles
@@ -263,7 +261,7 @@ Cost←{
 }
 ⍝ cost←.1 .9(⊃+.×)(⊢÷⌈/⍣2)¨(|input∘.-⍥(2∘⊃¨)font)(input ∘.Cost font)
 cost←input ∘.Cost font
-Log 'done matching'
+⍝ Log 'done matching'
 
 ⍝ (⍪'{(+⌿⍵)÷≢⍵}'),' ',
 ⎕←⍉cs[(10↑⍋)⍤1⊢cost]

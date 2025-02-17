@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ttFont ttLibVersion="4.55">
+  <glyf>
+    <!-- The xMin, yMin, xMax and yMax values
+         will be recalculated by the compiler. -->
+    <TTGlyph name="uni250A" xMin="241" yMin="-245" xMax="327" yMax="924">
+      <contour>
+        <pt x="241" y="924" on="1"/>
+        <pt x="327" y="924" on="1"/>
+        <pt x="327" y="696" on="1"/>
+        <pt x="241" y="696" on="1"/>
+      </contour>
+      <contour>
+        <pt x="241" y="610" on="1"/>
+        <pt x="327" y="610" on="1"/>
+        <pt x="327" y="382" on="1"/>
+        <pt x="241" y="382" on="1"/>
+      </contour>
+      <contour>
+        <pt x="241" y="297" on="1"/>
+        <pt x="327" y="297" on="1"/>
+        <pt x="327" y="69" on="1"/>
+        <pt x="241" y="69" on="1"/>
+      </contour>
+      <contour>
+        <pt x="241" y="-17" on="1"/>
+        <pt x="327" y="-17" on="1"/>
+        <pt x="327" y="-245" on="1"/>
+        <pt x="241" y="-245" on="1"/>
+      </contour>
+      <instructions/>
+    </TTGlyph>
+  </glyf>
+</ttFont>

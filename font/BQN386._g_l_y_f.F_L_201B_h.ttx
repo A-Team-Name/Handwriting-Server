@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ttFont ttLibVersion="4.55">
+  <glyf>
+    <!-- The xMin, yMin, xMax and yMax values
+         will be recalculated by the compiler. -->
+    <TTGlyph name="FL201Bh" xMin="230" yMin="406" xMax="392" yMax="680">
+      <contour>
+        <pt x="244" y="547" on="1"/>
+        <pt x="230" y="597" on="0"/>
+        <pt x="244" y="632" on="1"/>
+        <pt x="264" y="680" on="0"/>
+        <pt x="316" y="680" on="1"/>
+        <pt x="346" y="680" on="0"/>
+        <pt x="392" y="643" on="0"/>
+        <pt x="392" y="614" on="1"/>
+        <pt x="392" y="559" on="0"/>
+        <pt x="340" y="550" on="1"/>
+        <pt x="303" y="543" on="0"/>
+        <pt x="303" y="526" on="1"/>
+        <pt x="303" y="490" on="0"/>
+        <pt x="355" y="471" on="1"/>
+        <pt x="392" y="458" on="1"/>
+        <pt x="392" y="406" on="1"/>
+        <pt x="272" y="444" on="0"/>
+      </contour>
+      <instructions>
+        <assembly>
+          SVTCA[0]	/* SetFPVectorToAxis */
+          PUSHB[ ]	/* 3 values pushed */
+          4 3 0
+          CALL[ ]	/* CallFunction */
+          PUSHB[ ]	/* 5 values pushed */
+          9 7 0 16 4
+          CALL[ ]	/* CallFunction */
+          SVTCA[1]	/* SetFPVectorToAxis */
+          PUSHB[ ]	/* 1 value pushed */
+          17
+          MDAP[1]	/* MoveDirectAbsPt */
+          PUSHB[ ]	/* 1 value pushed */
+          0
+          MDRP[10110]	/* MoveDirectRelPt */
+          PUSHB[ ]	/* 1 value pushed */
+          2
+          SHP[0]	/* ShiftPointByLastPoint */
+          PUSHB[ ]	/* 5 values pushed */
+          15 12 0 40 4
+          CALL[ ]	/* CallFunction */
+          PUSHB[ ]	/* 1 value pushed */
+          7
+          SHP[0]	/* ShiftPointByLastPoint */
+          PUSHB[ ]	/* 1 value pushed */
+          15
+          SRP0[ ]	/* SetRefPoint0 */
+          PUSHB[ ]	/* 1 value pushed */
+          18
+          MDRP[10110]	/* MoveDirectRelPt */
+          PUSHB[ ]	/* 2 values pushed */
+          15 0
+          SRP1[ ]	/* SetRefPoint1 */
+          SRP2[ ]	/* SetRefPoint2 */
+          PUSHB[ ]	/* 1 value pushed */
+          11
+          IP[ ]	/* InterpolatePts */
+          SVTCA[0]	/* SetFPVectorToAxis */
+          IUP[0]	/* InterpolateUntPts */
+          IUP[1]	/* InterpolateUntPts */
+        </assembly>
+      </instructions>
+    </TTGlyph>
+  </glyf>
+</ttFont>
