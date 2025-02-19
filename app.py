@@ -24,13 +24,19 @@ def convert_to_text():
 
     img = np.asarray(Image.open(file).convert("L"))
 
+    print(np.max(img), np.min(img))
+
+    print(img.shape)
+
+    Image.fromarray(img).save("uploaded_img.png")
+
     response: Output = inferer.process_image(img)
     
     response_dict = {
         "top_preds": response.top_preds,
         "top_probs": response.top_probs
     }
-
+    print(response_dict)
     return jsonify(response_dict)
 
 @app.route("/test", methods=["GET"])
