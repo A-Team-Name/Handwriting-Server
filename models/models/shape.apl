@@ -215,7 +215,7 @@ EdgePoints←{
 		ci[i;j]≠¯1: ⍺ ⍝ loop complete
 		⍺∇i j         ⍝ continue on next point around the curve, tco babyy
 	}¨p
-	c←c{⍺[;⌊.5+⍵÷⍨(1⊃⍴⍺)×⍳⍵]}¨⍺ Distribute (1⊃⍴)¨c ⍝ pick points from contour
+	c←c{⍺[;⌊⍵÷⍨(1⊃⍴⍺)×⍳⍵]}¨⍺ Distribute (1⊃⍴)¨c ⍝ pick points from contour
 	c←{1 ¯1×⍤0 1⊖⍵}¨c ⍝ i j → x y
 	m←{
 		n←1⊃⍴⍵
