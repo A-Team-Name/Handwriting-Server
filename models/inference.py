@@ -32,8 +32,8 @@ class Inferer:
         output_probs: list[list[float]] = []
         for image in inputs:
             output = self.model.predict(image)
-            output_preds.append(output.top_preds)
-            output_probs.append(output.top_probs)
+            output_preds += output.top_preds
+            output_probs += output.top_probs
             
         return Output(
             output_preds,
