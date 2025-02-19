@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ttFont ttLibVersion="4.55">
+  <glyf>
+    <!-- The xMin, yMin, xMax and yMax values
+         will be recalculated by the compiler. -->
+    <TTGlyph name="FL043Bh" xMin="62" yMin="-11" xMax="537" yMax="472">
+      <contour>
+        <pt x="208" y="472" on="1"/>
+        <pt x="208" y="472" on="0"/>
+        <pt x="450" y="472" on="1"/>
+        <pt x="507" y="472" on="0"/>
+        <pt x="523" y="458" on="1"/>
+        <pt x="537" y="446" on="0"/>
+        <pt x="537" y="385" on="1"/>
+        <pt x="537" y="34" on="1"/>
+        <pt x="537" y="15" on="0"/>
+        <pt x="524" y="5" on="1"/>
+        <pt x="511" y="-2" on="0"/>
+        <pt x="495" y="-4" on="1"/>
+        <pt x="450" y="-7" on="0"/>
+        <pt x="450" y="34" on="1"/>
+        <pt x="450" y="385" on="1"/>
+        <pt x="294" y="385" on="1"/>
+        <pt x="294" y="148" on="1"/>
+        <pt x="294" y="110" on="0"/>
+        <pt x="284" y="80" on="1"/>
+        <pt x="258" y="0" on="0"/>
+        <pt x="188" y="-6" on="1"/>
+        <pt x="150" y="-11" on="0"/>
+        <pt x="98" y="21" on="1"/>
+        <pt x="91" y="24" on="0"/>
+        <pt x="76" y="33" on="0"/>
+        <pt x="67" y="38" on="1"/>
+        <pt x="62" y="43" on="0"/>
+        <pt x="62" y="50" on="1"/>
+        <pt x="62" y="58" on="0"/>
+        <pt x="67" y="78" on="1"/>
+        <pt x="74" y="98" on="0"/>
+        <pt x="86" y="105" on="1"/>
+        <pt x="98" y="113" on="0"/>
+        <pt x="108" y="112" on="1"/>
+        <pt x="111" y="112" on="0"/>
+        <pt x="156" y="94" on="1"/>
+        <pt x="167" y="87" on="0"/>
+        <pt x="178" y="87" on="1"/>
+        <pt x="200" y="87" on="0"/>
+        <pt x="206" y="134" on="1"/>
+        <pt x="207" y="139" on="0"/>
+        <pt x="208" y="176" on="0"/>
+        <pt x="208" y="207" on="1"/>
+        <pt x="208" y="385" on="1"/>
+        <pt x="186" y="385" on="0"/>
+        <pt x="177" y="398" on="1"/>
+        <pt x="166" y="415" on="0"/>
+        <pt x="166" y="429" on="1"/>
+        <pt x="168" y="445" on="0"/>
+        <pt x="179" y="458" on="1"/>
+        <pt x="188" y="472" on="0"/>
+      </contour>
+      <instructions>
+        <assembly>
+          SVTCA[0]	/* SetFPVectorToAxis */
+          PUSHB[ ]	/* 1 value pushed */
+          43
+          MDAP[1]	/* MoveDirectAbsPt */
+          PUSHB[ ]	/* 1 value pushed */
+          14
+          SHP[1]	/* ShiftPointByLastPoint */
+          PUSHB[ ]	/* 2 values pushed */
+          0 4
+          MIRP[01001]	/* MoveIndirectRelPt */
+          PUSHB[ ]	/* 1 value pushed */
+          2
+          SHP[0]	/* ShiftPointByLastPoint */
+          SVTCA[1]	/* SetFPVectorToAxis */
+          PUSHB[ ]	/* 1 value pushed */
+          51
+          MDAP[1]	/* MoveDirectAbsPt */
+          PUSHB[ ]	/* 1 value pushed */
+          42
+          MDRP[10110]	/* MoveDirectRelPt */
+          PUSHB[ ]	/* 2 values pushed */
+          16 9
+          MIRP[01001]	/* MoveIndirectRelPt */
+          PUSHB[ ]	/* 3 values pushed */
+          42 16 10
+          CALL[ ]	/* CallFunction */
+          PUSHB[ ]	/* 4 values pushed */
+          64 42 47 9
+          CALL[ ]	/* CallFunction */
+          PUSHB[ ]	/* 1 value pushed */
+          16
+          SRP0[ ]	/* SetRefPoint0 */
+          PUSHB[ ]	/* 3 values pushed */
+          42 13 16
+          CALL[ ]	/* CallFunction */
+          PUSHB[ ]	/* 2 values pushed */
+          7 9
+          MIRP[01001]	/* MoveIndirectRelPt */
+          PUSHB[ ]	/* 1 value pushed */
+          7
+          SRP0[ ]	/* SetRefPoint0 */
+          PUSHB[ ]	/* 1 value pushed */
+          52
+          MDRP[10110]	/* MoveDirectRelPt */
+          SVTCA[0]	/* SetFPVectorToAxis */
+          IUP[0]	/* InterpolateUntPts */
+          IUP[1]	/* InterpolateUntPts */
+        </assembly>
+      </instructions>
+    </TTGlyph>
+  </glyf>
+</ttFont>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ttFont ttLibVersion="4.55">
+  <glyf>
+    <!-- The xMin, yMin, xMax and yMax values
+         will be recalculated by the compiler. -->
+    <TTGlyph name="uni203F" xMin="-26" yMin="-196" xMax="623" yMax="-22">
+      <contour>
+        <pt x="-19" y="-65" on="1"/>
+        <pt x="-25" y="-58" on="0"/>
+        <pt x="-22" y="-50" on="1"/>
+        <pt x="-15" y="-33" on="0"/>
+        <pt x="7" y="-30" on="1"/>
+        <pt x="17" y="-30" on="0"/>
+        <pt x="24" y="-35" on="1"/>
+        <pt x="142" y="-138" on="0"/>
+        <pt x="310" y="-137" on="1"/>
+        <pt x="478" y="-135" on="0"/>
+        <pt x="574" y="-33" on="1"/>
+        <pt x="583" y="-23" on="0"/>
+        <pt x="594" y="-24" on="1"/>
+        <pt x="604" y="-25" on="0"/>
+        <pt x="619" y="-40" on="0"/>
+        <pt x="621" y="-50" on="1"/>
+        <pt x="622" y="-60" on="0"/>
+        <pt x="614" y="-70" on="1"/>
+        <pt x="567" y="-131" on="0"/>
+        <pt x="481" y="-163" on="1"/>
+        <pt x="440" y="-178" on="0"/>
+        <pt x="395" y="-186" on="1"/>
+        <pt x="343" y="-195" on="0"/>
+        <pt x="302" y="-194" on="1"/>
+        <pt x="259" y="-194" on="0"/>
+        <pt x="208" y="-185" on="1"/>
+        <pt x="114" y="-168" on="0"/>
+        <pt x="43" y="-120" on="1"/>
+        <pt x="6" y="-96" on="0"/>
+      </contour>
+      <instructions>
+        <assembly>
+          SVTCA[0]	/* SetFPVectorToAxis */
+          PUSHB[ ]	/* 3 values pushed */
+          23 0 0
+          CALL[ ]	/* CallFunction */
+          PUSHB[ ]	/* 5 values pushed */
+          8 5 0 29 4
+          CALL[ ]	/* CallFunction */
+          SVTCA[1]	/* SetFPVectorToAxis */
+          PUSHB[ ]	/* 1 value pushed */
+          29
+          MDAP[1]	/* MoveDirectAbsPt */
+          PUSHB[ ]	/* 1 value pushed */
+          30
+          MDRP[10110]	/* MoveDirectRelPt */
+          SVTCA[0]	/* SetFPVectorToAxis */
+          IUP[0]	/* InterpolateUntPts */
+          IUP[1]	/* InterpolateUntPts */
+        </assembly>
+      </instructions>
+    </TTGlyph>
+  </glyf>
+</ttFont>

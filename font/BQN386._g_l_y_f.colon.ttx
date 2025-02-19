@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ttFont ttLibVersion="4.55">
+  <glyf>
+    <!-- The xMin, yMin, xMax and yMax values
+         will be recalculated by the compiler. -->
+    <TTGlyph name="colon" xMin="206" yMin="37" xMax="372" yMax="478">
+      <contour>
+        <pt x="372" y="390" on="1"/>
+        <pt x="372" y="373" on="0"/>
+        <pt x="359" y="343" on="0"/>
+        <pt x="336" y="320" on="0"/>
+        <pt x="306" y="306" on="0"/>
+        <pt x="290" y="306" on="1"/>
+        <pt x="273" y="306" on="0"/>
+        <pt x="243" y="320" on="0"/>
+        <pt x="220" y="343" on="0"/>
+        <pt x="206" y="373" on="0"/>
+        <pt x="206" y="390" on="1"/>
+        <pt x="206" y="422" on="0"/>
+        <pt x="232" y="450" on="1"/>
+        <pt x="257" y="478" on="0"/>
+        <pt x="290" y="478" on="1"/>
+        <pt x="307" y="478" on="0"/>
+        <pt x="337" y="463" on="0"/>
+        <pt x="359" y="439" on="0"/>
+        <pt x="372" y="407" on="0"/>
+      </contour>
+      <contour>
+        <pt x="368" y="117" on="1"/>
+        <pt x="368" y="88" on="0"/>
+        <pt x="342" y="62" on="1"/>
+        <pt x="317" y="37" on="0"/>
+        <pt x="287" y="37" on="1"/>
+        <pt x="272" y="37" on="0"/>
+        <pt x="242" y="50" on="0"/>
+        <pt x="220" y="73" on="0"/>
+        <pt x="206" y="102" on="0"/>
+        <pt x="206" y="117" on="1"/>
+        <pt x="206" y="144" on="0"/>
+        <pt x="232" y="174" on="1"/>
+        <pt x="254" y="199" on="0"/>
+        <pt x="280" y="202" on="1"/>
+        <pt x="284" y="202" on="0"/>
+        <pt x="287" y="202" on="1"/>
+        <pt x="304" y="202" on="0"/>
+        <pt x="333" y="188" on="0"/>
+        <pt x="355" y="164" on="0"/>
+        <pt x="368" y="133" on="0"/>
+      </contour>
+      <instructions/>
+    </TTGlyph>
+  </glyf>
+</ttFont>
