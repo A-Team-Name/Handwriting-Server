@@ -35,14 +35,14 @@ class ShapeContextsModel(Model):
         lines = completed_process.stdout.split('\n')[:-1]
 
         top_preds = list(map(list, zip(*map(list, lines))))
+        #           │       │ │   │└───────┴─────────── strings to lists of chars
+        #           │       │ └───┴──────────────────── transpose
+        #           └───────┴────────────────────────── tuple → list
 
         probs = [[1.0 for _ in predset] for predset in top_preds]
 
         return Output(
             top_preds,
-            #    │       │ │   │└───────┴─────────── strings to lists of chars
-            #    │       │ └───┴──────────────────── transpose
-            #    └───────┴────────────────────────── tuple → list
-            probs, # TODO: this
+            probs,
         )
 
