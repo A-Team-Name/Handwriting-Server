@@ -14,7 +14,7 @@ Load←{
 	⍝ ⍵: ⍬
 	⍝ ←: bitarray
 	tie←⍵ ⎕NTIE 0
-	data←¯1≠(input.size⍴⎕NREAD tie 83 ¯1)
+	data←0≤(input.size⍴⎕NREAD tie 83 ¯1)
 	_←⎕NUNTIE tie
 	data
 }
