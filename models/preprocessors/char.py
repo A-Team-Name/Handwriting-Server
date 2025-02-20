@@ -2,6 +2,8 @@ import numpy as np
 import numpy.typing as npt
 from .preprocessor import Preprocessor
 
+from PIL import Image
+
 class CharPreprocessor(Preprocessor):
     """
     Preprocessor for character images.
@@ -23,7 +25,7 @@ class CharPreprocessor(Preprocessor):
             list[npt.NDArray[np.ubyte]]: The split images.
         """
 
-        data = image != 0
+        data = image != 255
         h, w = data.shape
 
         # we use a simple disjoint set data structure represented by a parent matrix
@@ -109,8 +111,13 @@ class CharPreprocessor(Preprocessor):
             i = np.argwhere(s == e).ravel() % w
             min = i.min()
             max = i.max()
-            glyphs.append((min, max, 255 * (e == s.reshape([h, w])[:, min : max + 1])))
+            glyphs.append((min, max, 255 * np.logical_not((e == s.reshape([h, w])[:, min : max + 1]))))
         glyphs.sort()
         glyphs = [glyph[2] for glyph in glyphs]
+        
+        np.set_printoptions(
+            threshold = 10000000,
+            linewidth = 12345,
+        )
 
         return glyphs

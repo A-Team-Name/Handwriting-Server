@@ -4,6 +4,7 @@ from ..output import Output
 from PIL import Image
 import onnxruntime
 import numpy as np
+import numpy.typing as npt
 import os
 
 class LambdaCNNChar(OnnxModel):
@@ -18,13 +19,15 @@ class LambdaCNNChar(OnnxModel):
         Initialize the Hello World Model by specifying the path to the ONNX model file
         """
         current_dir = os.path.dirname(__file__)
-        model_path = os.path.join(current_dir, 'onnx/char_model_lamda_calculus.onnx')
+        model_path = os.path.join(current_dir, 'onnx/lambda_calculus_char.onnx')
         super().__init__(model_path)
     
     
-    def predict(self, img: Image.Image) -> Output:
+    def predict(self, img: npt.NDArray[np.ubyte]) -> Output:
+        np_img = img.astype(np.float32)
         
-        input_image = np.asarray(img).astype(np.float32)
+        # Need to reshape the image to (1, 1, H, W)
+        np_img = np_img.reshape(1, 1, *np_img.shape)
 
         # Run inference
         inputs: list[onnxruntime.NodeArg] = self.model.get_inputs()
@@ -34,21 +37,32 @@ class LambdaCNNChar(OnnxModel):
         output_name: list[str] = outputs[0].name
         softmax_ordered: np.ndarray
         
+        Image.fromarray(np_img[0][0]).show()
 
-        model_outputs = self.model.run(
+        softmax_ordered = self.model.run(
             [output_name], 
-            {input_name: input_image}
-        )
+            {input_name: np_img}
+        )[0]
+        
+        softmax_ordered = softmax_ordered.reshape(1, *softmax_ordered.shape)
+        
+        probs: np.ndarray = softmax_ordered[:, :self.top_preds, 1]
+        chars: np.ndarray = softmax_ordered[:, :self.top_preds, 0]
+        
+        top_chars = [
+            [chr(int(pred)) for pred in top_pred]
+            for top_pred in chars
+        ]
+        
+        top_probs = [
+            [float(prob) for prob in top_prob]
+            for top_prob in probs
+        ]
+        
 
-        softmax_ordered = model_outputs[0]
-        probs: np.ndarray = softmax_ordered[:, 1]
-        chars: np.ndarray = softmax_ordered[:, 0]
-
-        top_3_chars: np.ndarray = chars[:3]
-        top_3_probs: np.ndarray = probs[:3]
         
         return Output(
-            [top_3_chars],
-            [top_3_probs]
+            top_chars,
+            top_probs
         )
     
