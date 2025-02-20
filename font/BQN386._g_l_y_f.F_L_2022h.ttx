@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ttFont ttLibVersion="4.55">
+  <glyf>
+    <!-- The xMin, yMin, xMax and yMax values
+         will be recalculated by the compiler. -->
+    <TTGlyph name="FL2022h" xMin="153" yMin="171" xMax="446" yMax="460">
+      <contour>
+        <pt x="445" y="314" on="1"/>
+        <pt x="445" y="248" on="0"/>
+        <pt x="359" y="171" on="0"/>
+        <pt x="293" y="171" on="1"/>
+        <pt x="233" y="171" on="0"/>
+        <pt x="154" y="255" on="0"/>
+        <pt x="154" y="316" on="1"/>
+        <pt x="154" y="378" on="0"/>
+        <pt x="237" y="460" on="0"/>
+        <pt x="299" y="460" on="1"/>
+        <pt x="367" y="460" on="0"/>
+        <pt x="445" y="381" on="0"/>
+      </contour>
+      <instructions>
+        <assembly>
+          SVTCA[0]	/* SetFPVectorToAxis */
+          PUSHB[ ]	/* 1 value pushed */
+          3
+          MDAP[1]	/* MoveDirectAbsPt */
+          PUSHB[ ]	/* 5 values pushed */
+          9 8 0 7 4
+          CALL[ ]	/* CallFunction */
+          SVTCA[1]	/* SetFPVectorToAxis */
+          PUSHB[ ]	/* 1 value pushed */
+          12
+          MDAP[1]	/* MoveDirectAbsPt */
+          PUSHB[ ]	/* 1 value pushed */
+          6
+          MDRP[10110]	/* MoveDirectRelPt */
+          PUSHB[ ]	/* 5 values pushed */
+          0 12 0 7 4
+          CALL[ ]	/* CallFunction */
+          PUSHB[ ]	/* 1 value pushed */
+          0
+          SRP0[ ]	/* SetRefPoint0 */
+          PUSHB[ ]	/* 1 value pushed */
+          13
+          MDRP[10110]	/* MoveDirectRelPt */
+          SVTCA[0]	/* SetFPVectorToAxis */
+          IUP[0]	/* InterpolateUntPts */
+          IUP[1]	/* InterpolateUntPts */
+        </assembly>
+      </instructions>
+    </TTGlyph>
+  </glyf>
+</ttFont>

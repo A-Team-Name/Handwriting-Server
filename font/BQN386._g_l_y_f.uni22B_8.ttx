@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ttFont ttLibVersion="4.55">
+  <glyf>
+    <!-- The xMin, yMin, xMax and yMax values
+         will be recalculated by the compiler. -->
+    <TTGlyph name="uni22B8" xMin="20" yMin="171" xMax="564" yMax="460">
+      <contour>
+        <pt x="56" y="275" on="1"/>
+        <pt x="20" y="275" on="0"/>
+        <pt x="20" y="310" on="1"/>
+        <pt x="20" y="354" on="0"/>
+        <pt x="56" y="354" on="1"/>
+        <pt x="277" y="354" on="1"/>
+        <pt x="286" y="391" on="0"/>
+        <pt x="314" y="419" on="1"/>
+        <pt x="356" y="460" on="0"/>
+        <pt x="418" y="460" on="1"/>
+        <pt x="485" y="460" on="0"/>
+        <pt x="564" y="381" on="0"/>
+        <pt x="564" y="314" on="1"/>
+        <pt x="564" y="248" on="0"/>
+        <pt x="477" y="171" on="0"/>
+        <pt x="411" y="171" on="1"/>
+        <pt x="352" y="171" on="0"/>
+        <pt x="312" y="213" on="1"/>
+        <pt x="287" y="240" on="0"/>
+        <pt x="278" y="275" on="1"/>
+      </contour>
+      <contour>
+        <pt x="489" y="311" on="1"/>
+        <pt x="489" y="343" on="0"/>
+        <pt x="450" y="380" on="0"/>
+        <pt x="386" y="380" on="0"/>
+        <pt x="344" y="345" on="0"/>
+        <pt x="344" y="314" on="1"/>
+        <pt x="344" y="245" on="0"/>
+        <pt x="489" y="245" on="0"/>
+      </contour>
+      <instructions>
+        <assembly>
+          SVTCA[0]	/* SetFPVectorToAxis */
+          PUSHB[ ]	/* 1 value pushed */
+          15
+          MDAP[1]	/* MoveDirectAbsPt */
+          PUSHB[ ]	/* 2 values pushed */
+          27 5
+          MIRP[01001]	/* MoveIndirectRelPt */
+          PUSHB[ ]	/* 1 value pushed */
+          0
+          MDAP[1]	/* MoveDirectAbsPt */
+          PUSHB[ ]	/* 2 values pushed */
+          4 6
+          MIRP[01001]	/* MoveIndirectRelPt */
+          PUSHB[ ]	/* 1 value pushed */
+          23
+          MDAP[1]	/* MoveDirectAbsPt */
+          PUSHB[ ]	/* 2 values pushed */
+          9 6
+          MIRP[01001]	/* MoveIndirectRelPt */
+          SVTCA[1]	/* SetFPVectorToAxis */
+          PUSHB[ ]	/* 1 value pushed */
+          28
+          MDAP[1]	/* MoveDirectAbsPt */
+          PUSHB[ ]	/* 1 value pushed */
+          20
+          MDRP[10110]	/* MoveDirectRelPt */
+          PUSHB[ ]	/* 2 values pushed */
+          12 10
+          MIRP[01001]	/* MoveIndirectRelPt */
+          PUSHB[ ]	/* 1 value pushed */
+          12
+          SRP0[ ]	/* SetRefPoint0 */
+          PUSHB[ ]	/* 1 value pushed */
+          29
+          MDRP[10110]	/* MoveDirectRelPt */
+          SVTCA[0]	/* SetFPVectorToAxis */
+          PUSHB[ ]	/* 2 values pushed */
+          4 0
+          SRP1[ ]	/* SetRefPoint1 */
+          SRP2[ ]	/* SetRefPoint2 */
+          PUSHB[ ]	/* 3 values pushed */
+          2 12 20
+          IP[ ]	/* InterpolatePts */
+          IP[ ]	/* InterpolatePts */
+          IP[ ]	/* InterpolatePts */
+          IUP[0]	/* InterpolateUntPts */
+          IUP[1]	/* InterpolateUntPts */
+        </assembly>
+      </instructions>
+    </TTGlyph>
+  </glyf>
+</ttFont>

@@ -1,9 +1,9 @@
 from .model import Model
 from ..output import Output
 
-from PIL import Image
-import onnxruntime
 import numpy as np
+import numpy.typing as npt
+import onnxruntime
 import json
 
 class OnnxModel(Model):
@@ -27,17 +27,17 @@ class OnnxModel(Model):
         self.top_preds = top_preds
         super().__init__()
     
-    def predict(self, img: Image.Image) -> Output:
+    def predict(self, img: npt.NDArray[np.ubyte]) -> Output:
         """
         Perform inference on the given image
 
         Args:
-            img (Image.Image): The image to perform inference on. Image MUST have only 1 channel (i.e. 2d numpy array)
+            img (npt.NDArray[np.ubyte]): The image to perform inference on. Image MUST have only 1 channel (i.e. 2d numpy array)
 
         Returns:
             Output: Output of the ONNX model
         """
-        np_img = np.array(img).astype(np.float32)
+        np_img = img.astype(np.float32)
         
         # Need to reshape the image to (1, 1, H, W)
         # This is because the model expects a batch size of 1 and 1 channel

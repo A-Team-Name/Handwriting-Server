@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ttFont ttLibVersion="4.55">
+  <glyf>
+    <!-- The xMin, yMin, xMax and yMax values
+         will be recalculated by the compiler. -->
+    <TTGlyph name="FL03C8h" xMin="55" yMin="-134" xMax="545" yMax="484">
+      <contour>
+        <pt x="260" y="5" on="1"/>
+        <pt x="250" y="5" on="1"/>
+        <pt x="239" y="5" on="0"/>
+        <pt x="219" y="7" on="0"/>
+        <pt x="211" y="9" on="1"/>
+        <pt x="200" y="12" on="0"/>
+        <pt x="179" y="22" on="0"/>
+        <pt x="168" y="29" on="1"/>
+        <pt x="128" y="54" on="0"/>
+        <pt x="104" y="93" on="1"/>
+        <pt x="81" y="129" on="0"/>
+        <pt x="67" y="174" on="1"/>
+        <pt x="65" y="182" on="0"/>
+        <pt x="61" y="204" on="0"/>
+        <pt x="59" y="218" on="1"/>
+        <pt x="58" y="225" on="0"/>
+        <pt x="56" y="242" on="0"/>
+        <pt x="55" y="253" on="1"/>
+        <pt x="55" y="445" on="1"/>
+        <pt x="55" y="453" on="0"/>
+        <pt x="60" y="458" on="1"/>
+        <pt x="63" y="466" on="0"/>
+        <pt x="70" y="470" on="1"/>
+        <pt x="78" y="475" on="0"/>
+        <pt x="92" y="479" on="0"/>
+        <pt x="99" y="479" on="1"/>
+        <pt x="116" y="479" on="0"/>
+        <pt x="129" y="471" on="1"/>
+        <pt x="135" y="467" on="0"/>
+        <pt x="139" y="458" on="1"/>
+        <pt x="140" y="453" on="0"/>
+        <pt x="141" y="447" on="0"/>
+        <pt x="141" y="445" on="1"/>
+        <pt x="141" y="253" on="1"/>
+        <pt x="141" y="242" on="0"/>
+        <pt x="145" y="212" on="0"/>
+        <pt x="149" y="192" on="1"/>
+        <pt x="162" y="156" on="0"/>
+        <pt x="171" y="141" on="1"/>
+        <pt x="185" y="118" on="0"/>
+        <pt x="208" y="104" on="1"/>
+        <pt x="233" y="89" on="0"/>
+        <pt x="255" y="88" on="1"/>
+        <pt x="260" y="88" on="0"/>
+        <pt x="260" y="92" on="1"/>
+        <pt x="260" y="444" on="1"/>
+        <pt x="260" y="452" on="0"/>
+        <pt x="266" y="460" on="1"/>
+        <pt x="269" y="474" on="0"/>
+        <pt x="295" y="482" on="0"/>
+        <pt x="304" y="484" on="1"/>
+        <pt x="323" y="482" on="0"/>
+        <pt x="335" y="474" on="1"/>
+        <pt x="342" y="469" on="0"/>
+        <pt x="345" y="457" on="1"/>
+        <pt x="347" y="446" on="1"/>
+        <pt x="347" y="92" on="1"/>
+        <pt x="380" y="92" on="0"/>
+        <pt x="401" y="102" on="1"/>
+        <pt x="423" y="113" on="0"/>
+        <pt x="436" y="138" on="1"/>
+        <pt x="447" y="159" on="0"/>
+        <pt x="452" y="187" on="1"/>
+        <pt x="457" y="212" on="0"/>
+        <pt x="457" y="253" on="1"/>
+        <pt x="457" y="445" on="1"/>
+        <pt x="457" y="455" on="0"/>
+        <pt x="474" y="471" on="0"/>
+        <pt x="486" y="473" on="1"/>
+        <pt x="490" y="475" on="0"/>
+        <pt x="497" y="477" on="0"/>
+        <pt x="501" y="478" on="1"/>
+        <pt x="520" y="475" on="0"/>
+        <pt x="532" y="470" on="1"/>
+        <pt x="545" y="463" on="0"/>
+        <pt x="545" y="452" on="1"/>
+        <pt x="545" y="447" on="0"/>
+        <pt x="544" y="445" on="1"/>
+        <pt x="544" y="253" on="1"/>
+        <pt x="544" y="233" on="0"/>
+        <pt x="544" y="221" on="1"/>
+        <pt x="544" y="209" on="0"/>
+        <pt x="543" y="204" on="1"/>
+        <pt x="542" y="196" on="0"/>
+        <pt x="538" y="172" on="0"/>
+        <pt x="535" y="158" on="1"/>
+        <pt x="525" y="111" on="0"/>
+        <pt x="500" y="78" on="1"/>
+        <pt x="495" y="70" on="0"/>
+        <pt x="483" y="54" on="0"/>
+        <pt x="475" y="46" on="1"/>
+        <pt x="456" y="30" on="0"/>
+        <pt x="440" y="24" on="1"/>
+        <pt x="425" y="14" on="0"/>
+        <pt x="398" y="8" on="1"/>
+        <pt x="380" y="5" on="0"/>
+        <pt x="360" y="5" on="1"/>
+        <pt x="347" y="5" on="1"/>
+        <pt x="347" y="-96" on="1"/>
+        <pt x="347" y="-117" on="0"/>
+        <pt x="324" y="-134" on="0"/>
+        <pt x="307" y="-134" on="1"/>
+        <pt x="304" y="-134" on="1"/>
+        <pt x="296" y="-132" on="0"/>
+        <pt x="290" y="-130" on="1"/>
+        <pt x="280" y="-129" on="0"/>
+        <pt x="274" y="-124" on="1"/>
+        <pt x="267" y="-117" on="0"/>
+        <pt x="266" y="-111" on="1"/>
+        <pt x="260" y="-104" on="0"/>
+        <pt x="260" y="-96" on="1"/>
+      </contour>
+      <instructions>
+        <assembly>
+          SVTCA[0]	/* SetFPVectorToAxis */
+          PUSHB[ ]	/* 3 values pushed */
+          25 2 0
+          CALL[ ]	/* CallFunction */
+          PUSHB[ ]	/* 2 values pushed */
+          50 71
+          SHP[1]	/* ShiftPointByLastPoint */
+          SHP[1]	/* ShiftPointByLastPoint */
+          PUSHB[ ]	/* 1 value pushed */
+          1
+          MDAP[1]	/* MoveDirectAbsPt */
+          PUSHB[ ]	/* 1 value pushed */
+          96
+          SHP[1]	/* ShiftPointByLastPoint */
+          PUSHB[ ]	/* 2 values pushed */
+          42 4
+          MIRP[01001]	/* MoveIndirectRelPt */
+          PUSHB[ ]	/* 1 value pushed */
+          56
+          SHP[0]	/* ShiftPointByLastPoint */
+          PUSHB[ ]	/* 3 values pushed */
+          1 42 10
+          CALL[ ]	/* CallFunction */
+          PUSHB[ ]	/* 4 values pushed */
+          64 1 102 9
+          CALL[ ]	/* CallFunction */
+          SVTCA[1]	/* SetFPVectorToAxis */
+          PUSHB[ ]	/* 1 value pushed */
+          111
+          MDAP[1]	/* MoveDirectAbsPt */
+          PUSHB[ ]	/* 1 value pushed */
+          17
+          MDRP[10110]	/* MoveDirectRelPt */
+          PUSHB[ ]	/* 2 values pushed */
+          33 9
+          MIRP[01001]	/* MoveIndirectRelPt */
+          PUSHB[ ]	/* 1 value pushed */
+          33
+          SRP0[ ]	/* SetRefPoint0 */
+          PUSHB[ ]	/* 3 values pushed */
+          17 110 16
+          CALL[ ]	/* CallFunction */
+          PUSHB[ ]	/* 1 value pushed */
+          44
+          SHP[0]	/* ShiftPointByLastPoint */
+          PUSHB[ ]	/* 2 values pushed */
+          98 9
+          MIRP[01001]	/* MoveIndirectRelPt */
+          PUSHB[ ]	/* 1 value pushed */
+          55
+          SHP[0]	/* ShiftPointByLastPoint */
+          PUSHB[ ]	/* 1 value pushed */
+          98
+          SRP0[ ]	/* SetRefPoint0 */
+          PUSHB[ ]	/* 3 values pushed */
+          110 64 16
+          CALL[ ]	/* CallFunction */
+          PUSHB[ ]	/* 2 values pushed */
+          80 9
+          MIRP[01001]	/* MoveIndirectRelPt */
+          PUSHB[ ]	/* 3 values pushed */
+          75 77 82
+          SHP[0]	/* ShiftPointByLastPoint */
+          SHP[0]	/* ShiftPointByLastPoint */
+          SHP[0]	/* ShiftPointByLastPoint */
+          PUSHB[ ]	/* 1 value pushed */
+          80
+          SRP0[ ]	/* SetRefPoint0 */
+          PUSHB[ ]	/* 1 value pushed */
+          112
+          MDRP[10110]	/* MoveDirectRelPt */
+          SVTCA[0]	/* SetFPVectorToAxis */
+          PUSHB[ ]	/* 2 values pushed */
+          25 42
+          SRP1[ ]	/* SetRefPoint1 */
+          SRP2[ ]	/* SetRefPoint2 */
+          PUSHB[ ]	/* 2 values pushed */
+          47 80
+          IP[ ]	/* InterpolatePts */
+          IP[ ]	/* InterpolatePts */
+          IUP[0]	/* InterpolateUntPts */
+          IUP[1]	/* InterpolateUntPts */
+        </assembly>
+      </instructions>
+    </TTGlyph>
+  </glyf>
+</ttFont>

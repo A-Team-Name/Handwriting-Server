@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ttFont ttLibVersion="4.55">
+  <glyf>
+    <!-- The xMin, yMin, xMax and yMax values
+         will be recalculated by the compiler. -->
+    <TTGlyph name="Breve" xMin="134" yMin="758" xMax="483" yMax="922">
+      <contour>
+        <pt x="483" y="883" on="1"/>
+        <pt x="480" y="813" on="0"/>
+        <pt x="373" y="758" on="0"/>
+        <pt x="306" y="758" on="1"/>
+        <pt x="235" y="758" on="0"/>
+        <pt x="145" y="826" on="0"/>
+        <pt x="134" y="877" on="1"/>
+        <pt x="145" y="913" on="0"/>
+        <pt x="185" y="919" on="0"/>
+        <pt x="178" y="922" on="1"/>
+        <pt x="208" y="901" on="0"/>
+        <pt x="256" y="849" on="0"/>
+        <pt x="306" y="846" on="1"/>
+        <pt x="368" y="851" on="0"/>
+        <pt x="414" y="914" on="0"/>
+        <pt x="439" y="919" on="1"/>
+        <pt x="483" y="922" on="0"/>
+      </contour>
+      <instructions>
+        <assembly>
+          SVTCA[0]	/* SetFPVectorToAxis */
+          PUSHB[ ]	/* 1 value pushed */
+          3
+          MDAP[1]	/* MoveDirectAbsPt */
+          PUSHB[ ]	/* 2 values pushed */
+          9 8
+          MIRP[01001]	/* MoveIndirectRelPt */
+          SVTCA[1]	/* SetFPVectorToAxis */
+          PUSHB[ ]	/* 1 value pushed */
+          17
+          MDAP[1]	/* MoveDirectAbsPt */
+          PUSHB[ ]	/* 1 value pushed */
+          18
+          MDRP[10110]	/* MoveDirectRelPt */
+          SVTCA[0]	/* SetFPVectorToAxis */
+          IUP[0]	/* InterpolateUntPts */
+          IUP[1]	/* InterpolateUntPts */
+        </assembly>
+      </instructions>
+    </TTGlyph>
+  </glyf>
+</ttFont>

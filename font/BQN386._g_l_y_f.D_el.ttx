@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ttFont ttLibVersion="4.55">
+  <glyf>
+    <!-- The xMin, yMin, xMax and yMax values
+         will be recalculated by the compiler. -->
+    <TTGlyph name="Del" xMin="52" yMin="-38" xMax="548" yMax="578">
+      <contour>
+        <pt x="548" y="542" on="1"/>
+        <pt x="548" y="520" on="0"/>
+        <pt x="305" y="-38" on="1"/>
+        <pt x="52" y="519" on="0"/>
+        <pt x="52" y="544" on="1"/>
+        <pt x="52" y="578" on="0"/>
+        <pt x="96" y="578" on="1"/>
+        <pt x="501" y="578" on="1"/>
+        <pt x="518" y="578" on="0"/>
+        <pt x="532" y="569" on="1"/>
+        <pt x="548" y="559" on="0"/>
+      </contour>
+      <contour>
+        <pt x="431" y="495" on="1"/>
+        <pt x="163" y="496" on="1"/>
+        <pt x="304" y="186" on="1"/>
+      </contour>
+      <instructions>
+        <assembly>
+          SVTCA[0]	/* SetFPVectorToAxis */
+          PUSHB[ ]	/* 1 value pushed */
+          12
+          MDAP[1]	/* MoveDirectAbsPt */
+          PUSHB[ ]	/* 2 values pushed */
+          6 6
+          MIRP[01001]	/* MoveIndirectRelPt */
+          SVTCA[1]	/* SetFPVectorToAxis */
+          PUSHB[ ]	/* 1 value pushed */
+          14
+          MDAP[1]	/* MoveDirectAbsPt */
+          PUSHB[ ]	/* 1 value pushed */
+          15
+          MDRP[10110]	/* MoveDirectRelPt */
+          SVTCA[0]	/* SetFPVectorToAxis */
+          PUSHB[ ]	/* 2 values pushed */
+          6 12
+          SRP1[ ]	/* SetRefPoint1 */
+          SRP2[ ]	/* SetRefPoint2 */
+          PUSHB[ ]	/* 2 values pushed */
+          4 0
+          IP[ ]	/* InterpolatePts */
+          IP[ ]	/* InterpolatePts */
+          IUP[0]	/* InterpolateUntPts */
+          IUP[1]	/* InterpolateUntPts */
+        </assembly>
+      </instructions>
+    </TTGlyph>
+  </glyf>
+</ttFont>

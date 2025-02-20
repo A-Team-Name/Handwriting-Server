@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ttFont ttLibVersion="4.55">
+  <glyf>
+    <!-- The xMin, yMin, xMax and yMax values
+         will be recalculated by the compiler. -->
+    <TTGlyph name="Parallel" xMin="174" yMin="-113" xMax="447" yMax="757">
+      <contour>
+        <pt x="261" y="-78" on="1"/>
+        <pt x="261" y="-113" on="0"/>
+        <pt x="214" y="-113" on="1"/>
+        <pt x="174" y="-113" on="0"/>
+        <pt x="174" y="-80" on="1"/>
+        <pt x="174" y="715" on="1"/>
+        <pt x="174" y="754" on="0"/>
+        <pt x="220" y="754" on="1"/>
+        <pt x="235" y="754" on="0"/>
+        <pt x="260" y="733" on="0"/>
+        <pt x="261" y="718" on="1"/>
+      </contour>
+      <contour>
+        <pt x="447" y="-75" on="1"/>
+        <pt x="447" y="-110" on="0"/>
+        <pt x="400" y="-110" on="1"/>
+        <pt x="360" y="-110" on="0"/>
+        <pt x="360" y="-77" on="1"/>
+        <pt x="360" y="718" on="1"/>
+        <pt x="360" y="757" on="0"/>
+        <pt x="406" y="757" on="1"/>
+        <pt x="421" y="757" on="0"/>
+        <pt x="446" y="736" on="0"/>
+        <pt x="447" y="721" on="1"/>
+      </contour>
+      <instructions>
+        <assembly>
+          SVTCA[0]	/* SetFPVectorToAxis */
+          SVTCA[1]	/* SetFPVectorToAxis */
+          PUSHB[ ]	/* 1 value pushed */
+          22
+          MDAP[1]	/* MoveDirectAbsPt */
+          PUSHB[ ]	/* 1 value pushed */
+          4
+          MDRP[10110]	/* MoveDirectRelPt */
+          PUSHB[ ]	/* 2 values pushed */
+          0 9
+          MIRP[01001]	/* MoveIndirectRelPt */
+          PUSHB[ ]	/* 1 value pushed */
+          0
+          SRP0[ ]	/* SetRefPoint0 */
+          PUSHB[ ]	/* 3 values pushed */
+          4 15 16
+          CALL[ ]	/* CallFunction */
+          PUSHB[ ]	/* 2 values pushed */
+          11 9
+          MIRP[01001]	/* MoveIndirectRelPt */
+          PUSHB[ ]	/* 1 value pushed */
+          11
+          SRP0[ ]	/* SetRefPoint0 */
+          PUSHB[ ]	/* 1 value pushed */
+          23
+          MDRP[10110]	/* MoveDirectRelPt */
+          SVTCA[0]	/* SetFPVectorToAxis */
+          IUP[0]	/* InterpolateUntPts */
+          IUP[1]	/* InterpolateUntPts */
+        </assembly>
+      </instructions>
+    </TTGlyph>
+  </glyf>
+</ttFont>

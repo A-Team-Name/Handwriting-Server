@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ttFont ttLibVersion="4.55">
+  <glyf>
+    <!-- The xMin, yMin, xMax and yMax values
+         will be recalculated by the compiler. -->
+    <TTGlyph name="uni2263" xMin="78" yMin="-9" xMax="522" yMax="595">
+      <contour>
+        <pt x="517" y="30" on="1"/>
+        <pt x="517" y="-9" on="0"/>
+        <pt x="480" y="-9" on="1"/>
+        <pt x="119" y="-9" on="1"/>
+        <pt x="84" y="-9" on="0"/>
+        <pt x="84" y="33" on="1"/>
+        <pt x="84" y="48" on="0"/>
+        <pt x="107" y="78" on="0"/>
+        <pt x="122" y="78" on="1"/>
+        <pt x="480" y="78" on="1"/>
+        <pt x="517" y="78" on="0"/>
+      </contour>
+      <contour>
+        <pt x="522" y="550" on="1"/>
+        <pt x="522" y="508" on="0"/>
+        <pt x="480" y="508" on="1"/>
+        <pt x="117" y="508" on="1"/>
+        <pt x="84" y="508" on="0"/>
+        <pt x="84" y="550" on="1"/>
+        <pt x="84" y="566" on="0"/>
+        <pt x="107" y="595" on="0"/>
+        <pt x="123" y="595" on="1"/>
+        <pt x="481" y="595" on="1"/>
+        <pt x="522" y="595" on="0"/>
+      </contour>
+      <contour>
+        <pt x="517" y="372" on="1"/>
+        <pt x="517" y="332" on="0"/>
+        <pt x="482" y="332" on="1"/>
+        <pt x="122" y="332" on="1"/>
+        <pt x="78" y="332" on="0"/>
+        <pt x="78" y="377" on="1"/>
+        <pt x="78" y="394" on="0"/>
+        <pt x="94" y="407" on="1"/>
+        <pt x="111" y="420" on="0"/>
+        <pt x="131" y="420" on="1"/>
+        <pt x="476" y="414" on="1"/>
+        <pt x="517" y="413" on="0"/>
+      </contour>
+      <contour>
+        <pt x="517" y="201" on="1"/>
+        <pt x="517" y="162" on="0"/>
+        <pt x="480" y="162" on="1"/>
+        <pt x="119" y="162" on="1"/>
+        <pt x="84" y="162" on="0"/>
+        <pt x="84" y="204" on="1"/>
+        <pt x="84" y="219" on="0"/>
+        <pt x="107" y="249" on="0"/>
+        <pt x="122" y="249" on="1"/>
+        <pt x="480" y="249" on="1"/>
+        <pt x="517" y="249" on="0"/>
+      </contour>
+      <instructions>
+        <assembly>
+          SVTCA[0]	/* SetFPVectorToAxis */
+          PUSHB[ ]	/* 3 values pushed */
+          3 1 0
+          CALL[ ]	/* CallFunction */
+          PUSHB[ ]	/* 2 values pushed */
+          8 4
+          MIRP[01001]	/* MoveIndirectRelPt */
+          PUSHB[ ]	/* 1 value pushed */
+          37
+          MDAP[1]	/* MoveDirectAbsPt */
+          PUSHB[ ]	/* 2 values pushed */
+          42 4
+          MIRP[01001]	/* MoveIndirectRelPt */
+          PUSHB[ ]	/* 1 value pushed */
+          25
+          MDAP[1]	/* MoveDirectAbsPt */
+          PUSHB[ ]	/* 2 values pushed */
+          31 4
+          MIRP[01001]	/* MoveIndirectRelPt */
+          PUSHB[ ]	/* 1 value pushed */
+          14
+          MDAP[1]	/* MoveDirectAbsPt */
+          PUSHB[ ]	/* 2 values pushed */
+          19 4
+          MIRP[01001]	/* MoveIndirectRelPt */
+          SVTCA[1]	/* SetFPVectorToAxis */
+          PUSHB[ ]	/* 1 value pushed */
+          45
+          MDAP[1]	/* MoveDirectAbsPt */
+          PUSHB[ ]	/* 1 value pushed */
+          5
+          MDRP[10110]	/* MoveDirectRelPt */
+          PUSHB[ ]	/* 3 values pushed */
+          16 27 39
+          SHP[0]	/* ShiftPointByLastPoint */
+          SHP[0]	/* ShiftPointByLastPoint */
+          SHP[0]	/* ShiftPointByLastPoint */
+          PUSHB[ ]	/* 5 values pushed */
+          0 12 0 7 4
+          CALL[ ]	/* CallFunction */
+          PUSHB[ ]	/* 3 values pushed */
+          11 22 34
+          SHP[0]	/* ShiftPointByLastPoint */
+          SHP[0]	/* ShiftPointByLastPoint */
+          SHP[0]	/* ShiftPointByLastPoint */
+          PUSHB[ ]	/* 1 value pushed */
+          0
+          SRP0[ ]	/* SetRefPoint0 */
+          PUSHB[ ]	/* 1 value pushed */
+          46
+          MDRP[10110]	/* MoveDirectRelPt */
+          SVTCA[0]	/* SetFPVectorToAxis */
+          IUP[0]	/* InterpolateUntPts */
+          IUP[1]	/* InterpolateUntPts */
+        </assembly>
+      </instructions>
+    </TTGlyph>
+  </glyf>
+</ttFont>

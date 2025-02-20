@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ttFont ttLibVersion="4.55">
+  <glyf>
+    <!-- The xMin, yMin, xMax and yMax values
+         will be recalculated by the compiler. -->
+    <TTGlyph name="QuadQuery" xMin="16" yMin="-87" xMax="551" yMax="756">
+      <contour>
+        <pt x="439" y="466" on="1"/>
+        <pt x="439" y="419" on="0"/>
+        <pt x="412" y="403" on="1"/>
+        <pt x="404" y="389" on="0"/>
+        <pt x="378" y="351" on="0"/>
+        <pt x="358" y="326" on="1"/>
+        <pt x="364" y="344" on="0"/>
+        <pt x="336" y="295" on="0"/>
+        <pt x="323" y="281" on="0"/>
+        <pt x="317" y="253" on="1"/>
+        <pt x="311" y="229" on="0"/>
+        <pt x="290" y="203" on="0"/>
+        <pt x="266" y="203" on="1"/>
+        <pt x="249" y="203" on="0"/>
+        <pt x="222" y="227" on="0"/>
+        <pt x="222" y="244" on="1"/>
+        <pt x="222" y="312" on="0"/>
+        <pt x="293" y="389" on="1"/>
+        <pt x="300" y="397" on="0"/>
+        <pt x="317" y="415" on="0"/>
+        <pt x="333" y="424" on="0"/>
+        <pt x="341" y="452" on="1"/>
+        <pt x="341" y="487" on="0"/>
+        <pt x="301" y="529" on="0"/>
+        <pt x="266" y="529" on="1"/>
+        <pt x="241" y="529" on="0"/>
+        <pt x="216" y="513" on="1"/>
+        <pt x="197" y="500" on="0"/>
+        <pt x="174" y="487" on="0"/>
+        <pt x="170" y="485" on="1"/>
+        <pt x="132" y="499" on="0"/>
+        <pt x="132" y="538" on="1"/>
+        <pt x="132" y="571" on="0"/>
+        <pt x="180" y="597" on="1"/>
+        <pt x="221" y="620" on="0"/>
+        <pt x="258" y="620" on="1"/>
+        <pt x="330" y="620" on="0"/>
+        <pt x="370" y="595" on="1"/>
+        <pt x="414" y="568" on="0"/>
+        <pt x="432" y="501" on="1"/>
+        <pt x="439" y="477" on="0"/>
+      </contour>
+      <contour>
+        <pt x="317" y="110" on="1"/>
+        <pt x="317" y="84" on="0"/>
+        <pt x="283" y="49" on="0"/>
+        <pt x="258" y="49" on="1"/>
+        <pt x="236" y="49" on="0"/>
+        <pt x="202" y="81" on="0"/>
+        <pt x="202" y="103" on="1"/>
+        <pt x="202" y="128" on="0"/>
+        <pt x="233" y="167" on="0"/>
+        <pt x="263" y="171" on="1"/>
+        <pt x="278" y="167" on="0"/>
+        <pt x="317" y="128" on="0"/>
+      </contour>
+      <contour>
+        <pt x="551" y="-32" on="1"/>
+        <pt x="551" y="-87" on="0"/>
+        <pt x="497" y="-87" on="1"/>
+        <pt x="63" y="-87" on="1"/>
+        <pt x="16" y="-87" on="0"/>
+        <pt x="16" y="-32" on="1"/>
+        <pt x="16" y="700" on="1"/>
+        <pt x="16" y="756" on="0"/>
+        <pt x="71" y="756" on="1"/>
+        <pt x="497" y="756" on="1"/>
+        <pt x="520" y="756" on="0"/>
+        <pt x="551" y="728" on="0"/>
+        <pt x="551" y="705" on="1"/>
+      </contour>
+      <contour>
+        <pt x="464" y="0" on="1"/>
+        <pt x="464" y="671" on="1"/>
+        <pt x="103" y="671" on="1"/>
+        <pt x="103" y="0" on="1"/>
+      </contour>
+      <instructions>
+        <assembly>
+          SVTCA[0]	/* SetFPVectorToAxis */
+          PUSHB[ ]	/* 3 values pushed */
+          69 1 0
+          CALL[ ]	/* CallFunction */
+          PUSHB[ ]	/* 2 values pushed */
+          56 4
+          MIRP[01001]	/* MoveIndirectRelPt */
+          PUSHB[ ]	/* 3 values pushed */
+          68 3 0
+          CALL[ ]	/* CallFunction */
+          PUSHB[ ]	/* 2 values pushed */
+          61 4
+          MIRP[01001]	/* MoveIndirectRelPt */
+          PUSHB[ ]	/* 4 values pushed */
+          29 56 61 8
+          CALL[ ]	/* CallFunction */
+          PUSHB[ ]	/* 5 values pushed */
+          35 24 56 61 13
+          CALL[ ]	/* CallFunction */
+          PUSHB[ ]	/* 2 values pushed */
+          35 7
+          MIRP[01001]	/* MoveIndirectRelPt */
+          PUSHB[ ]	/* 3 values pushed */
+          24 35 10
+          CALL[ ]	/* CallFunction */
+          PUSHB[ ]	/* 4 values pushed */
+          0 24 12 9
+          CALL[ ]	/* CallFunction */
+          SVTCA[1]	/* SetFPVectorToAxis */
+          PUSHB[ ]	/* 1 value pushed */
+          70
+          MDAP[1]	/* MoveDirectAbsPt */
+          PUSHB[ ]	/* 1 value pushed */
+          58
+          MDRP[10110]	/* MoveDirectRelPt */
+          PUSHB[ ]	/* 2 values pushed */
+          69 9
+          MIRP[01001]	/* MoveIndirectRelPt */
+          PUSHB[ ]	/* 1 value pushed */
+          69
+          SRP0[ ]	/* SetRefPoint0 */
+          PUSHB[ ]	/* 3 values pushed */
+          58 47 16
+          CALL[ ]	/* CallFunction */
+          PUSHB[ ]	/* 5 values pushed */
+          41 11 0 27 4
+          CALL[ ]	/* CallFunction */
+          PUSHB[ ]	/* 1 value pushed */
+          41
+          SRP0[ ]	/* SetRefPoint0 */
+          PUSHB[ ]	/* 3 values pushed */
+          47 21 16
+          CALL[ ]	/* CallFunction */
+          PUSHB[ ]	/* 2 values pushed */
+          0 11
+          MIRP[01001]	/* MoveIndirectRelPt */
+          PUSHB[ ]	/* 3 values pushed */
+          21 0 10
+          CALL[ ]	/* CallFunction */
+          PUSHB[ ]	/* 4 values pushed */
+          64 21 15 9
+          CALL[ ]	/* CallFunction */
+          PUSHB[ ]	/* 1 value pushed */
+          0
+          SRP0[ ]	/* SetRefPoint0 */
+          PUSHB[ ]	/* 3 values pushed */
+          21 66 16
+          CALL[ ]	/* CallFunction */
+          PUSHB[ ]	/* 2 values pushed */
+          53 9
+          MIRP[01001]	/* MoveIndirectRelPt */
+          PUSHB[ ]	/* 1 value pushed */
+          53
+          SRP0[ ]	/* SetRefPoint0 */
+          PUSHB[ ]	/* 1 value pushed */
+          71
+          MDRP[10110]	/* MoveDirectRelPt */
+          PUSHB[ ]	/* 2 values pushed */
+          47 69
+          SRP1[ ]	/* SetRefPoint1 */
+          SRP2[ ]	/* SetRefPoint2 */
+          PUSHB[ ]	/* 2 values pushed */
+          27 31
+          IP[ ]	/* InterpolatePts */
+          IP[ ]	/* InterpolatePts */
+          PUSHB[ ]	/* 1 value pushed */
+          41
+          SRP1[ ]	/* SetRefPoint1 */
+          PUSHB[ ]	/* 4 values pushed */
+          9 24 26 35
+          DEPTH[ ]	/* GetDepthStack */
+          SLOOP[ ]	/* SetLoopVariable */
+          IP[ ]	/* InterpolatePts */
+          PUSHB[ ]	/* 1 value pushed */
+          21
+          SRP2[ ]	/* SetRefPoint2 */
+          PUSHB[ ]	/* 2 values pushed */
+          7 20
+          IP[ ]	/* InterpolatePts */
+          IP[ ]	/* InterpolatePts */
+          PUSHB[ ]	/* 1 value pushed */
+          0
+          SRP1[ ]	/* SetRefPoint1 */
+          PUSHB[ ]	/* 2 values pushed */
+          5 6
+          IP[ ]	/* InterpolatePts */
+          IP[ ]	/* InterpolatePts */
+          SVTCA[0]	/* SetFPVectorToAxis */
+          PUSHB[ ]	/* 2 values pushed */
+          29 69
+          SRP1[ ]	/* SetRefPoint1 */
+          SRP2[ ]	/* SetRefPoint2 */
+          PUSHB[ ]	/* 2 values pushed */
+          44 50
+          IP[ ]	/* InterpolatePts */
+          IP[ ]	/* InterpolatePts */
+          PUSHB[ ]	/* 2 values pushed */
+          35 24
+          SRP1[ ]	/* SetRefPoint1 */
+          SRP2[ ]	/* SetRefPoint2 */
+          PUSHB[ ]	/* 1 value pushed */
+          31
+          IP[ ]	/* InterpolatePts */
+          IUP[0]	/* InterpolateUntPts */
+          IUP[1]	/* InterpolateUntPts */
+        </assembly>
+      </instructions>
+    </TTGlyph>
+  </glyf>
+</ttFont>

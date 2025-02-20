@@ -1,5 +1,6 @@
-from PIL import Image
 from ..output import Output
+import numpy as np
+import numpy.typing as npt
 
 class Model:
     """
@@ -8,12 +9,12 @@ class Model:
     def __init__(self):
         pass
     
-    def predict(self, img: Image.Image) -> Output:
+    def predict(self, img: npt.NDArray[np.ubyte]) -> Output:
         """
         Perform inference on the given image
 
         Args:
-            img (Image.Image): The image to perform inference on
+            img (npt.NDArray[np.ubyte]): The image to perform inference on
 
         Returns:
             Output: The output of the model (top_preds, top_probs)

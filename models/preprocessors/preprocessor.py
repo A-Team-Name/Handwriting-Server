@@ -1,4 +1,5 @@
-from PIL import Image
+import numpy as np
+import numpy.typing as npt
 
 class Preprocessor:
     """
@@ -7,14 +8,14 @@ class Preprocessor:
     def __init__(self):
         pass
 
-    def preprocess(self, image: Image.Image) -> list[Image.Image]:
+    def preprocess(self, image: npt.NDArray[np.ubyte]) -> list[npt.NDArray[np.ubyte]]:
         """
         Preprocess an image.
 
         Args:
-            image (Image.Image): The image to preprocess.
+            image (npt.NDArray[np.ubyte]): The image to preprocess.
 
         Returns:
-            list[Image.Image]: The preprocessed images.
+            list[npt.NDArray[np.ubyte]]: The preprocessed images.
         """
         pass
