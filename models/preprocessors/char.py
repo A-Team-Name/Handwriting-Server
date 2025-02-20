@@ -105,19 +105,21 @@ class CharPreprocessor(Preprocessor):
         # this time put them into separate arrays
         # FIXME: it's inefficient to just do this all over, try save some results idk
         c = np.sort(np.unique(s))
-        s = np.searchsorted(c, s)
+        s = np.searchsorted(c, s).reshape([h, w])
         glyphs = []
         for e in range(1, len(c)):
-            i = np.argwhere(s == e).ravel() % w
-            min = i.min()
-            max = i.max()
-            glyphs.append((min, max, 255 * np.logical_not((e == s.reshape([h, w])[:, min : max + 1]))))
+            i = np.argwhere(s == e)
+            min_y, min_x = i.min(axis = 0)
+            max_y, max_x = i.max(axis = 0)
+            print(min_x, min_y, max_x, max_y)
+            glyphs.append((
+                min_x,
+                max_x,
+                255 * np.logical_not(e == s[min_y : max_y + 1, min_x : max_x + 1]),
+            ))
         glyphs.sort()
         glyphs = [glyph[2] for glyph in glyphs]
-        
-        np.set_printoptions(
-            threshold = 10000000,
-            linewidth = 12345,
-        )
+
+        # for g in glyphs: Image.fromarray(g.astype(np.uint8)).show()
 
         return glyphs
