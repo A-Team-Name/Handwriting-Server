@@ -24,6 +24,10 @@ class LambdaCNNChar(OnnxModel):
     
     
     def predict(self, img: npt.NDArray[np.ubyte]) -> Output:
+        pil_img = Image.fromarray(img.astype(np.uint8)).convert("L")
+        pil_img = pil_img.resize((64, 64))
+        img = np.asarray(pil_img)
+        img = (255 - img) / 255
         np_img = img.astype(np.float32)
         
         # Need to reshape the image to (1, 1, H, W)
@@ -36,8 +40,6 @@ class LambdaCNNChar(OnnxModel):
         input_name: str = inputs[0].name
         output_name: list[str] = outputs[0].name
         softmax_ordered: np.ndarray
-        
-        Image.fromarray(np_img[0][0]).show()
 
         softmax_ordered = self.model.run(
             [output_name], 
