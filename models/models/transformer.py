@@ -34,7 +34,15 @@ class TransformerModel(Model):
         Returns:
             str: The output of the model
         """
-        pixel_values = self.processor(Image.fromarray(img, 'L').convert("RGB"), return_tensors="pt").pixel_values
+        # img is a 2d numpy array
+        # Convert to RGB format
+        img = np.stack((img,)*3, axis=-1)
+        pixel_values = self.processor(img, return_tensors="pt").pixel_values
         generated_ids = self.model.generate(pixel_values)
 
-        return self.processor.batch_decode(generated_ids, skip_special_tokens=True)[0]
+        text = self.processor.decode(generated_ids[0], skip_special_tokens=True)
+
+        chars = [[char]*3 for char in text]
+        probs = [[1.0, 0.0, 0.0] for _ in text]
+
+        return Output(chars, probs)
