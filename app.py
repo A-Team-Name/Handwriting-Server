@@ -24,8 +24,6 @@ def convert_to_text():
 
     img = np.asarray(Image.open(file).convert("L"))
 
-    Image.fromarray(img).save("uploaded_img.png")
-
     response: Output = inferer.process_image(img)
     
     response_dict = {
