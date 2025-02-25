@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ttFont ttLibVersion="4.55">
+
+  <prep>
+    <assembly>
+      PUSHW[ ]	/* 1 value pushed */
+      511
+      SCANCTRL[ ]	/* ScanConversionControl */
+      PUSHB[ ]	/* 1 value pushed */
+      1
+      SCANTYPE[ ]	/* ScanType */
+      SVTCA[0]	/* SetFPVectorToAxis */
+      MPPEM[ ]	/* MeasurePixelPerEm */
+      PUSHB[ ]	/* 1 value pushed */
+      8
+      LT[ ]	/* LessThan */
+      IF[ ]	/* If */
+        PUSHB[ ]	/* 2 values pushed */
+        1 1
+        INSTCTRL[ ]	/* SetInstrExecControl */
+      EIF[ ]	/* EndIf */
+      PUSHB[ ]	/* 2 values pushed */
+      70 6
+      CALL[ ]	/* CallFunction */
+      IF[ ]	/* If */
+        POP[ ]	/* PopTopStack */
+        PUSHB[ ]	/* 1 value pushed */
+        16
+      EIF[ ]	/* EndIf */
+      MPPEM[ ]	/* MeasurePixelPerEm */
+      PUSHB[ ]	/* 1 value pushed */
+      20
+      GT[ ]	/* GreaterThan */
+      IF[ ]	/* If */
+        POP[ ]	/* PopTopStack */
+        PUSHB[ ]	/* 1 value pushed */
+        128
+      EIF[ ]	/* EndIf */
+      SCVTCI[ ]	/* SetCVTCutIn */
+      PUSHB[ ]	/* 1 value pushed */
+      6
+      CALL[ ]	/* CallFunction */
+      NOT[ ]	/* LogicalNot */
+      IF[ ]	/* If */
+        SVTCA[0]	/* SetFPVectorToAxis */
+        PUSHB[ ]	/* 1 value pushed */
+        4
+        DUP[ ]	/* DuplicateTopStack */
+        RCVT[ ]	/* ReadCVT */
+        PUSHB[ ]	/* 1 value pushed */
+        3
+        CALL[ ]	/* CallFunction */
+        WCVTP[ ]	/* WriteCVTInPixels */
+        PUSHB[ ]	/* 1 value pushed */
+        6
+        DUP[ ]	/* DuplicateTopStack */
+        RCVT[ ]	/* ReadCVT */
+        PUSHB[ ]	/* 3 values pushed */
+        4 75 2
+        CALL[ ]	/* CallFunction */
+        PUSHB[ ]	/* 1 value pushed */
+        3
+        CALL[ ]	/* CallFunction */
+        WCVTP[ ]	/* WriteCVTInPixels */
+        PUSHB[ ]	/* 1 value pushed */
+        5
+        DUP[ ]	/* DuplicateTopStack */
+        RCVT[ ]	/* ReadCVT */
+        PUSHB[ ]	/* 3 values pushed */
+        6 52 2
+        CALL[ ]	/* CallFunction */
+        PUSHB[ ]	/* 1 value pushed */
+        3
+        CALL[ ]	/* CallFunction */
+        WCVTP[ ]	/* WriteCVTInPixels */
+        PUSHB[ ]	/* 1 value pushed */
+        7
+        DUP[ ]	/* DuplicateTopStack */
+        RCVT[ ]	/* ReadCVT */
+        PUSHB[ ]	/* 3 values pushed */
+        4 132 2
+        CALL[ ]	/* CallFunction */
+        PUSHB[ ]	/* 1 value pushed */
+        3
+        CALL[ ]	/* CallFunction */
+        WCVTP[ ]	/* WriteCVTInPixels */
+        PUSHB[ ]	/* 1 value pushed */
+        8
+        DUP[ ]	/* DuplicateTopStack */
+        RCVT[ ]	/* ReadCVT */
+        PUSHB[ ]	/* 3 values pushed */
+        7 12 2
+        CALL[ ]	/* CallFunction */
+        PUSHB[ ]	/* 1 value pushed */
+        3
+        CALL[ ]	/* CallFunction */
+        WCVTP[ ]	/* WriteCVTInPixels */
+        SVTCA[1]	/* SetFPVectorToAxis */
+        PUSHB[ ]	/* 1 value pushed */
+        9
+        DUP[ ]	/* DuplicateTopStack */
+        RCVT[ ]	/* ReadCVT */
+        PUSHB[ ]	/* 1 value pushed */
+        3
+        CALL[ ]	/* CallFunction */
+        WCVTP[ ]	/* WriteCVTInPixels */
+        PUSHB[ ]	/* 1 value pushed */
+        10
+        DUP[ ]	/* DuplicateTopStack */
+        RCVT[ ]	/* ReadCVT */
+        PUSHB[ ]	/* 3 values pushed */
+        9 98 2
+        CALL[ ]	/* CallFunction */
+        PUSHB[ ]	/* 2 values pushed */
+        3 70
+        SROUND[ ]	/* SuperRound */
+        CALL[ ]	/* CallFunction */
+        WCVTP[ ]	/* WriteCVTInPixels */
+        PUSHB[ ]	/* 1 value pushed */
+        11
+        DUP[ ]	/* DuplicateTopStack */
+        RCVT[ ]	/* ReadCVT */
+        PUSHB[ ]	/* 3 values pushed */
+        9 109 2
+        CALL[ ]	/* CallFunction */
+        PUSHB[ ]	/* 2 values pushed */
+        3 70
+        SROUND[ ]	/* SuperRound */
+        CALL[ ]	/* CallFunction */
+        WCVTP[ ]	/* WriteCVTInPixels */
+        PUSHB[ ]	/* 1 value pushed */
+        12
+        DUP[ ]	/* DuplicateTopStack */
+        RCVT[ ]	/* ReadCVT */
+        PUSHB[ ]	/* 3 values pushed */
+        11 12 2
+        CALL[ ]	/* CallFunction */
+        PUSHB[ ]	/* 2 values pushed */
+        3 70
+        SROUND[ ]	/* SuperRound */
+        CALL[ ]	/* CallFunction */
+        WCVTP[ ]	/* WriteCVTInPixels */
+      EIF[ ]	/* EndIf */
+      PUSHB[ ]	/* 1 value pushed */
+      20
+      CALL[ ]	/* CallFunction */
+    </assembly>
+  </prep>
+
+</ttFont>

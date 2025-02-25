@@ -3,6 +3,7 @@ from ..output import Output
 
 from transformers import TrOCRProcessor, VisionEncoderDecoderModel
 import numpy as np
+import numpy.typing as npt
 
 class TransformerModel(Model):
     """
@@ -23,12 +24,12 @@ class TransformerModel(Model):
         self.processor = TrOCRProcessor.from_pretrained(processor_name)
         self.model = VisionEncoderDecoderModel.from_pretrained(model_name)
 
-    def predict(self, img: np.ndarray) -> Output:
+    def predict(self, img: npt.NDArray[np.ubyte]) -> Output:
         """
         Perform inference on the given image
 
         Args:
-            img (Image.Image): The image to perform inference on
+            img (npt.NDArray[np.ubyte]): The image to perform inference on
 
         Returns:
             str: The output of the model
