@@ -42,7 +42,7 @@ class TransformerModel(Model):
         
         text = self.processor.decode(generated_ids[0], skip_special_tokens=True)
         
-        chars = [[char] for char in text]
-        probs = [[1.0] for _ in text]
+        chars = [[char]*3 for char in text]
+        probs = [[1.0]*3 for _ in text]
         
         return Output(chars, probs)
