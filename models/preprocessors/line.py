@@ -40,12 +40,10 @@ class LinePreprocessor(Preprocessor):
                [1, 1, 1, 1, 1]])]
         """
         # collapse each row to be min of row
-        
         min_col = np.min(image, axis=1)
         
         # find connected components of value 0 and generate tuple of start and end
         # of each connected component
-        
         start = 0
         end = 0
         components = []
@@ -54,15 +52,15 @@ class LinePreprocessor(Preprocessor):
                 end = i
             else:
                 if start != end:
-                    components.append((start+1, end))
+                    components.append((start, end+1))
                 start = i
                 end = i
                 
-        # add 1 pixel padding
+        # cutout each connected component
         to_return = []
         for component in components:
             start, end = component
-            to_return.append(image[start-1:end+2])
+            to_return.append(image[start:end+1])
         
         return to_return
 
