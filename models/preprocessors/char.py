@@ -111,7 +111,6 @@ class CharPreprocessor(Preprocessor):
             i = np.argwhere(s == e)
             min_y, min_x = i.min(axis = 0)
             max_y, max_x = i.max(axis = 0)
-            print(min_x, min_y, max_x, max_y)
             glyphs.append((
                 min_x,
                 max_x,

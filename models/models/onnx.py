@@ -49,15 +49,17 @@ class OnnxModel(Model):
         input_name = inputs[0].name
         output_names = [output.name for output in outputs]
         
-        logits, softmax, softmax_ordered = self.model.run(
+        softmax_ordered = self.model.run(
             output_names,
             {input_name: np_img}
-        )
+        )[0]
         
-        top_preds = softmax_ordered[:, :, :self.top_preds, 2][0]
-        top_pred_probs = softmax_ordered[:, :, :self.top_preds, 1][0]
+        top_preds = softmax_ordered[:self.top_preds, 0]
+        top_pred_probs = softmax_ordered[:self.top_preds, 1]
         
-        print(top_preds, flush=True)
+        if len(top_preds.shape) == 1:
+            top_preds = top_preds.reshape(1, -1)
+            top_pred_probs = top_pred_probs.reshape(1, -1)
         
         top_chars = [
             [chr(int(pred)) for pred in top_pred]

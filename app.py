@@ -20,7 +20,6 @@ inferer: Inferer = Inferer(LambdaCNNChar(), CharPreprocessor())
 
 @app.route("/translate", methods=["POST"])
 def convert_to_text():
-    print(request.files, flush=True)
     file = request.files["image"]
 
     img = np.asarray(Image.open(file).convert("L"))
