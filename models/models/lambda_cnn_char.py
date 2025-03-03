@@ -23,7 +23,6 @@ class LambdaCNNChar(OnnxModel):
         super().__init__(model_path)
         
     def predict(self, img: npt.NDArray[np.ubyte]):
-        # Resize image to 62x62
         img = Image.fromarray(img.astype(np.uint8))
         img_resized = img.resize((60, 60))
         
