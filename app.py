@@ -6,8 +6,9 @@ from PIL import Image
 
 from models import Inferer
 from models.output import Output
-from models.models import TransformerModel
-from models.preprocessors import LinePreprocessor
+from models.models import HelloWorldModel
+from models.models import ShapeContextsModel, LambdaCNNChar
+from models.preprocessors import LinePreprocessor, CharPreprocessor
 
 from torch import cuda
 
@@ -15,11 +16,10 @@ print("Startup")
 
 app = Flask(__name__)
 
-inferer: Inferer = Inferer(TransformerModel("MrFitzmaurice/TrOCR-Lambda-Calculus", "MrFitzmaurice/TrOCR-Lambda-Calculus"), LinePreprocessor())
+inferer: Inferer = Inferer(LambdaCNNChar(), CharPreprocessor())
 
 @app.route("/translate", methods=["POST"])
 def convert_to_text():
-    print(request.files, flush=True)
     file = request.files["image"]
 
     img = np.asarray(Image.open(file).convert("L"))

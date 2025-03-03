@@ -30,6 +30,7 @@ class Inferer:
         inputs: list[npt.NDArray[np.ubyte]] = self.preprocessor.preprocess(img)
         output_preds: list[list[str]] = []
         output_probs: list[list[float]] = []
+
         for image in inputs:
             output = self.model.predict(image)
             output_preds += output.top_preds
