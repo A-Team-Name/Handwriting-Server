@@ -2,8 +2,6 @@ import numpy as np
 import numpy.typing as npt
 from .preprocessor import Preprocessor
 
-from PIL import Image
-
 class CharPreprocessor(Preprocessor):
     """
     Preprocessor for character images.
@@ -118,7 +116,5 @@ class CharPreprocessor(Preprocessor):
             ))
         glyphs.sort()
         glyphs = [glyph[2] for glyph in glyphs]
-
-        # for g in glyphs: Image.fromarray(g.astype(np.uint8)).show()
 
         return glyphs
