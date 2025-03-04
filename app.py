@@ -1,3 +1,4 @@
+import json
 import os
 import numpy as np
 
@@ -6,8 +7,7 @@ from PIL import Image
 
 from models import Inferer
 from models.output import Output
-from models.models import HelloWorldModel
-from models.models import ShapeContextsModel, LambdaCNNChar
+from models.models import ShapeContextsModel, LambdaCNNChar, TransformerModel
 from models.preprocessors import LinePreprocessor, CharPreprocessor
 
 from torch import cuda
@@ -16,11 +16,41 @@ print("Startup")
 
 app = Flask(__name__)
 
-inferer: Inferer = Inferer(LambdaCNNChar(), CharPreprocessor())
+models = {
+    "shape": Inferer(ShapeContextsModel(), LinePreprocessor()),
+    "cnn": Inferer(LambdaCNNChar(), CharPreprocessor()),
+    "trocr-lambda": Inferer(
+        TransformerModel("MrFitzmaurice/TrOCR-Lambda-Calculus", "MrFitzmaurice/TrOCR-Lambda-Calculus"),
+        CharPreprocessor()
+    )
+}
 
 @app.route("/translate", methods=["POST"])
 def convert_to_text():
-    file = request.files["image"]
+    """Converts an image of handwritten text to text
+    
+    POST structure:
+        headers: {
+            "Content-Type": "multipart/form-data"
+        }
+        files: {
+            "json": {
+                "model": "model_name"
+            },
+            "image": image_file
+        }
+    
+
+    Returns:
+        _type_: _description_
+    """
+    model = json.loads(request.files.get("json").read().decode("utf-8"))["model"]
+    file = request.files.get("image")
+    
+    try:
+        inferer = models[model]
+    except KeyError:
+        return jsonify({"error": "Model not found"}), 400
 
     img = np.asarray(Image.open(file).convert("L"))
 
