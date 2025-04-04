@@ -50,13 +50,11 @@ def convert_to_text():
     model = json.loads(request.files.get("json").read().decode("utf-8"))["model"]
     file = request.files.get("image")
     
-    try:
-        if model in models:
-            live_model = models[model]()
-            live_model_name = model
-    except KeyError:
-        return jsonify({"error": "Model not found"}), 400
-
+    if model in models:
+        live_model = models[model]()
+        live_model_name = model
+    else:
+        return jsonify({"error": "Model not recognized"}), 400
     img = np.asarray(Image.open(file).convert("L"))
 
     response: Output = live_model.process_image(img)
