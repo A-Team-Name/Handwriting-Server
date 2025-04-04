@@ -17,13 +17,16 @@ print("Startup")
 app = Flask(__name__)
 
 models = {
-    "shape": Inferer(ShapeContextsModel(), LinePreprocessor()),
-    "cnn": Inferer(LambdaCNNChar(), CharPreprocessor()),
-    "trocr-lambda": Inferer(
+    "shape": lambda : Inferer(ShapeContextsModel(), LinePreprocessor()),
+    "cnn": lambda : Inferer(LambdaCNNChar(), CharPreprocessor()),
+    "trocr-lambda": lambda : Inferer(
         TransformerModel("MrFitzmaurice/TrOCR-Lambda-Calculus", "MrFitzmaurice/TrOCR-Lambda-Calculus"),
         CharPreprocessor()
     )
 }
+
+live_model_name = "cnn"
+live_model = models[live_model_name]()
 
 @app.route("/translate", methods=["POST"])
 def convert_to_text():
@@ -48,17 +51,20 @@ def convert_to_text():
     file = request.files.get("image")
     
     try:
-        inferer = models[model]
+        if model in models:
+            live_model = models[model]()
+            live_model_name = model
     except KeyError:
         return jsonify({"error": "Model not found"}), 400
 
     img = np.asarray(Image.open(file).convert("L"))
 
-    response: Output = inferer.process_image(img)
+    response: Output = live_model.process_image(img)
     
     response_dict = {
         "top_preds": response.top_preds,
-        "top_probs": response.top_probs
+        "top_probs": response.top_probs,
+        "model": live_model_name,
     }
 
     return jsonify(response_dict)
