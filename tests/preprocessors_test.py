@@ -35,8 +35,8 @@ def test_line_separation():
     image[80:120, :] = 0  # Line 2
     result = preprocessor.preprocess(image)
     assert len(result) == 2  # Two lines should be detected
-    assert result[0].shape[0] == 42  # Each line should be 40 pixels tall
-    assert result[1].shape[0] == 42  # Each line should be 40 pixels tall
+    assert result[0].shape[0] == 42  # Each line should be 42 pixels tall
+    assert result[1].shape[0] == 42  # Each line should be 42 pixels tall
     assert result[0].shape[1] == 128  # Each line should be 128 pixels wide
     assert result[1].shape[1] == 128  # Each line should be 128 pixels wide
     
@@ -49,7 +49,7 @@ def test_char_on_equals():
     image[80:120, 30:70] = 0  # Character 2
     result = preprocessor.preprocess(image)
     assert len(result) == 1  # One character should be detected
-    assert result[0].shape == (92, 42)  # Character should be 40x40 pixels
+    assert result[0].shape == (92, 42)  # Character should be 92x42 pixels
     
 def test_char_invalid_shape():
     """Test the CharPreprocessor with an image of invalid shape"""
