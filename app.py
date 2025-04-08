@@ -17,15 +17,15 @@ print("Startup")
 app = Flask(__name__)
 
 models = {
-    "shape": lambda : Inferer(ShapeContextsModel(), LinePreprocessor()),
-    "cnn": lambda : Inferer(LambdaCNNChar(), CharPreprocessor()),
-    "trocr-lambda": lambda : Inferer(
+    "shape-lambda-calculus": lambda : Inferer(ShapeContextsModel(), LinePreprocessor()),
+    "cnn-lambda-calculus": lambda : Inferer(LambdaCNNChar(), CharPreprocessor()),
+    "trocr-lambda-calculus": lambda : Inferer(
         TransformerModel("MrFitzmaurice/TrOCR-Lambda-Calculus", "MrFitzmaurice/TrOCR-Lambda-Calculus"),
-        CharPreprocessor()
+        LinePreprocessor()
     )
 }
 
-live_model_name = "cnn"
+live_model_name = "cnn-lambda-calculus"
 live_model = models[live_model_name]()
 
 @app.route("/translate", methods=["POST"])

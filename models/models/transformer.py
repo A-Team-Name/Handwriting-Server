@@ -2,6 +2,7 @@ from .model import Model
 from ..output import Output
 
 from transformers import TrOCRProcessor, VisionEncoderDecoderModel
+from PIL import Image
 import numpy as np
 import numpy.typing as npt
 
@@ -36,7 +37,8 @@ class TransformerModel(Model):
         """
         # img is a 2d numpy array
         # Convert to RGB format
-        img = np.stack((img,)*3, axis=-1)
+        img = img.astype(np.uint8)
+        img = Image.fromarray(img).convert("RGB")
         pixel_values = self.processor(img, return_tensors="pt").pixel_values
         generated_ids = self.model.generate(pixel_values)
 
