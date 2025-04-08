@@ -18,17 +18,20 @@ class LinePreprocessor(Preprocessor):
         pass
     
 
-    def preprocess(self, image: npt.NDArray[np.ubyte]) -> list[npt.NDArray[np.ubyte]]:
+    def preprocess(self,
+        image:       npt.NDArray[np.ubyte],
+        indentation: bool,
+    ) -> list[npt.NDArray[np.ubyte]]:
         """
         Line separation using naive connected component analysis on columns.
 
         Args:
             image (npt.NDArray[np.ubyte]): The image to preprocess.
+            indentation (bool):            Whether to infer indentation
 
         Returns:
             list[npt.NDArray[np.ubyte]]: The preprocessed images.
-            
-            
+
         >>> processor = LinePreprocessor()
         >>> test_img = np.array([[1,1,1,1,1],[1,1,1,1,1,],[1,0,0,0,1],[1,0,1,1,1],[1,1,1,1,1],[1,0,1,0,1],[1,1,1,1,1]])
         >>> processor.preprocess(test_img)
@@ -57,12 +60,30 @@ class LinePreprocessor(Preprocessor):
                 end = i
                 
         # cutout each connected component
-        to_return = []
-        for component in components:
-            start, end = component
-            to_return.append(image[start:end+1])
-        
-        return to_return
+        lines   = []
+        offsets = np.zeros(len(components))
+        for i in range(len(components)):
+            start, end = components[i]
+            line = image[start : end + 1]
+            lines.append(line)
+            print(line[0, [0, 1, 2, 3, 4, 5]])
+            if indentation:
+                offsets[i] = (np.logical_not(line)
+                    .sum(axis = 0)
+                    .nonzero()[0][0]
+                    .item()
+                )
+
+        if not indentation:
+            return lines
+
+        e = image.shape[1] / 20                             # less then e difference in offsets => same indentation
+        i = np.argsort(offsets)                             # i←⍋offsets
+        increase = np.insert(np.diff(offsets[i]), 0, 0) > e # increase←e<¯2-⌿offsets[i]
+        indents = np.cumsum(increase)[np.argsort(i)]        # indents←(+\increase)[⍋i]
+        indents = [it.item() for it in indents]             # return to normal python array
+
+        return (lines, indents)
 
 if __name__ == "__main__":
     doctest.testmod()

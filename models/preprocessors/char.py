@@ -12,16 +12,22 @@ class CharPreprocessor(Preprocessor):
     def __init__(self):
         pass
 
-    def preprocess(self, image: npt.NDArray[np.ubyte]) -> list[npt.NDArray[np.ubyte]]:
+    def preprocess(self,
+        image:       npt.NDArray[np.ubyte],
+        indentation: bool,
+    ) -> list[npt.NDArray[np.ubyte]]:
         """
-        Character separation
+        Character separation.
 
         Args:
-            image (npt.NDArray[np.ubyte]): The line to split into characters.
+            image (npt.NDArray[np.ubyte]): The image to preprocess.
+            indentation (bool):            Whether to infer indentation
 
         Returns:
-            list[npt.NDArray[np.ubyte]]: The split images.
+            list[npt.NDArray[np.ubyte]]: The preprocessed images.
         """
+
+        assert not indentation, 'indentation inference is not available for this preprocessor'
 
         data = image != 255
         h, w = data.shape

@@ -6,8 +6,7 @@ from PIL import Image
 
 from models import Inferer
 from models.output import Output
-from models.models import HelloWorldModel
-from models.models import ShapeContextsModel, LambdaCNNChar
+from models.models import HelloWorldModel, ShapeContextsModel, LambdaCNNChar, DummyModel
 from models.preprocessors import LinePreprocessor, CharPreprocessor
 
 from torch import cuda
@@ -16,21 +15,17 @@ print("Startup")
 
 app = Flask(__name__)
 
-inferer: Inferer = Inferer(LambdaCNNChar(), CharPreprocessor())
+inferer: Inferer = Inferer(DummyModel(), LinePreprocessor())
 
 @app.route("/translate", methods=["POST"])
 def convert_to_text():
-    file = request.files["image"]
-
-    img = np.asarray(Image.open(file).convert("L"))
-
-    response: Output = inferer.process_image(img)
-    
-    response_dict = {
+    file             = request.files["image"]
+    img              = np.asarray(Image.open(file).convert("L"))
+    response: Output = inferer.process_image(img, indentation = True)
+    response_dict    = {
         "top_preds": response.top_preds,
         "top_probs": response.top_probs
     }
-
     return jsonify(response_dict)
 
 @app.route("/test", methods=["GET"])

@@ -17,23 +17,44 @@ class Inferer:
         self.model = model
         self.preprocessor = preprocessor
 
-    def process_image(self, img: npt.NDArray[np.ubyte]) -> Output:
+    def process_image(self,
+        img:         npt.NDArray[np.ubyte],
+        indentation: bool = False,
+    ) -> Output:
         """
         Perform inference on the given image
 
         Args:
             img (npt.NDArray[np.ubyte]): The image to perform inference on
+            indentation (bool):          Whether to infer indentation
 
         Returns:
             Output: The output of the model
         """
-        inputs: list[npt.NDArray[np.ubyte]] = self.preprocessor.preprocess(img)
-        output_preds: list[list[str]] = []
-        output_probs: list[list[float]] = []
 
-        for image in inputs:
-            output = self.model.predict(image)
-            output_preds += output.top_preds
+        inputs:       list[npt.NDArray[np.ubyte]] = []
+        indents:      list[int]                   = []
+        output_preds: list[list[str]]             = []
+        output_probs: list[list[float]]           = []
+
+        if indentation:
+            inputs, indents = self.preprocessor.preprocess(img, indentation)
+            print(indents)
+        else:
+            inputs = self.preprocessor.preprocess(img, indentation)
+
+        for i in range(len(inputs)):
+            output = self.model.predict(inputs[i])
+            if indentation:
+                output_preds += [
+                    [
+                        ("    " * indents[i]) + s
+                        for s in strings
+                    ]
+                    for strings in output.top_preds
+                ]
+            else:
+                output_preds += output.top_preds
             output_probs += output.top_probs
             
         return Output(
