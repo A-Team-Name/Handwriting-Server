@@ -24,7 +24,7 @@ def test_translate(client):
     # Mock the request data
     
     data = {
-        'model': 'cnn',
+        'model': 'cnn-lambda-calculus',
     }
     
     with open("tests/test_img.png", "rb") as image_file:
