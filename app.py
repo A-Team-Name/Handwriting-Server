@@ -47,6 +47,11 @@ def convert_to_text():
     Returns:
         _type_: _description_
     """
+    if request.files.get("json") is None:
+        return jsonify({"error": "No model provided"}), 400
+    if request.files.get("image") is None:
+        return jsonify({"error": "No image provided"}), 400
+    
     model = json.loads(request.files.get("json").read().decode("utf-8"))["model"]
     file = request.files.get("image")
     
