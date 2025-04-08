@@ -116,5 +116,12 @@ class CharPreprocessor(Preprocessor):
             ))
         glyphs.sort()
         glyphs = [glyph[2] for glyph in glyphs]
+        
+        # pad each glyph with a border of 1 pixel
+        for i in range(len(glyphs)):
+            glyph = glyphs[i]
+            h, w = glyph.shape
+            glyph = np.pad(glyph, ((1, 1), (1, 1)), constant_values = 255)
+            glyphs[i] = glyph
 
         return glyphs
