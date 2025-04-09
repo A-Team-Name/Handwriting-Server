@@ -32,29 +32,21 @@ class Inferer:
             Output: The output of the model
         """
 
-        inputs:       list[npt.NDArray[np.ubyte]] = []
-        indents:      list[int]                   = []
         output_preds: list[list[str]]             = []
         output_probs: list[list[float]]           = []
 
-        if indentation:
-            inputs, indents = self.preprocessor.preprocess(img, indentation)
-        else:
-            inputs = self.preprocessor.preprocess(img, indentation)
+        for (prefix, image, suffix) in self.preprocessor.preprocess(img, indentation):
+            for c in prefix:
+                output_preds += [[c]]
+                output_probs += [[1.0]]
 
-        for i in range(len(inputs)):
-            output = self.model.predict(inputs[i])
-            if indentation:
-                output_preds += [
-                    [
-                        ("    " * indents[i]) + s
-                        for s in strings
-                    ]
-                    for strings in output.top_preds
-                ]
-            else:
-                output_preds += output.top_preds
+            output = self.model.predict(image)
+            output_preds += output.top_preds
             output_probs += output.top_probs
+
+            for c in suffix:
+                output_preds += [[c]]
+                output_probs += [[1.0]]
             
         return Output(
             output_preds,

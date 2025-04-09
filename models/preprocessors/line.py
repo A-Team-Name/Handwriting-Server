@@ -21,7 +21,7 @@ class LinePreprocessor(Preprocessor):
     def preprocess(self,
         image:       npt.NDArray[np.ubyte],
         indentation: bool,
-    ) -> list[npt.NDArray[np.ubyte]]:
+    ) -> list[tuple[str, npt.NDArray[np.ubyte], str]]:
         """
         Line separation using naive connected component analysis on columns.
 
@@ -30,7 +30,7 @@ class LinePreprocessor(Preprocessor):
             indentation (bool):            Whether to infer indentation
 
         Returns:
-            list[npt.NDArray[np.ubyte]]: The preprocessed images.
+            list[tuple[str, npt.NDArray[np.ubyte], str]]: The preprocessed images and their separating strings (newlines and indentation)
 
         >>> processor = LinePreprocessor()
         >>> test_img = np.array([[1,1,1,1,1],[1,1,1,1,1,],[1,0,0,0,1],[1,0,1,1,1],[1,1,1,1,1],[1,0,1,0,1],[1,1,1,1,1]])
@@ -73,8 +73,15 @@ class LinePreprocessor(Preprocessor):
                     .item()
                 )
 
+        # technically not necessary to early return as
+        # offsets is initialised to all zeros so all the
+        # indentation stuff will be a no-op, but better
+        # safe than sorry
         if not indentation:
-            return lines
+            return [
+                ('', line, '\n')
+                for line in lines
+            ]
 
         # essentially indents←(+\e<0,¯2-/o[⍋o])[⍋⍋o]
         e        = image.shape[1] / 20                          # less then e difference in offsets => same indentation
@@ -82,6 +89,11 @@ class LinePreprocessor(Preprocessor):
         increase = np.insert(np.diff(offsets[i]) > e, 0, False) # increase[j] is (offsets[i][j] - offsets[i][j - 1] > e) (and increase[0] is 0)
         indents  = np.cumsum(increase)[np.argsort(i)]           # cumsum(increase) tells us which level of indentation a line is in, then [argsort(i)] undoes the sort
         indents  = [it.item() for it in indents]                # return to normal python array
+
+        return [
+            ('\t' * indent, line, '\n')
+            for (line, indent) in zip(lines, indents)
+        ]
 
         '''
         indentation inference example:
@@ -129,9 +141,12 @@ class LinePreprocessor(Preprocessor):
         indeed, there are two lines not indented, two lines indented by one, and two
         indented by 2. now we just need to undo the sorting to get these back in the
         right places.
-        '''
 
-        return (lines, indents)
+            cumsum(increases)[argsort(i)] = [0, 1, 2, 1, 2, 0]
+
+        gives us the desired indentations. if you want to know why [argsort(i)] undoes
+        the sort, message asher and be ready for a lengthy explanation
+        '''
 
 if __name__ == "__main__":
     doctest.testmod()

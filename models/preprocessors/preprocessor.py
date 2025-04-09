@@ -11,15 +11,15 @@ class Preprocessor:
     def preprocess(self,
         image:       npt.NDArray[np.ubyte],
         indentation: bool,
-    ) -> list[npt.NDArray[np.ubyte]]:
+    ) -> list[tuple[str, npt.NDArray[np.ubyte], str]]:
         """
-        Preprocess an image.
+        Preprocess an image by splitting it.
 
         Args:
             image (npt.NDArray[np.ubyte]): The image to preprocess.
             indentation (bool):            Whether to infer indentation
 
         Returns:
-            list[npt.NDArray[np.ubyte]]: The preprocessed images.
+            list[tuple[str, npt.NDArray[np.ubyte], str]]: The preprocessed images, and their strings to be prefixed and suffixed
         """
         assert False, 'this should be overloaded'

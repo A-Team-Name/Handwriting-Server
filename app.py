@@ -15,9 +15,9 @@ from torch import cuda
 app = Flask(__name__)
 
 models = {
-    "shape-lambda-calculus": lambda : Inferer(ShapeContextsModel(), LinePreprocessor()),
-    "cnn-lambda-calculus": lambda : Inferer(LambdaCNNChar(), CharPreprocessor()),
-    "trocr-lambda-calculus": lambda : Inferer(
+    "shape-lambda-calculus": lambda: Inferer(ShapeContextsModel(), LinePreprocessor()),
+    "cnn-lambda-calculus":   lambda: Inferer(LambdaCNNChar(),      CharPreprocessor()),
+    "trocr-lambda-calculus": lambda: Inferer(
         TransformerModel("MrFitzmaurice/TrOCR-Lambda-Calculus", "MrFitzmaurice/TrOCR-Lambda-Calculus"),
         LinePreprocessor()
     )

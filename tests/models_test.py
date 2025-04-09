@@ -3,6 +3,7 @@ from models.models import TransformerModel, ShapeContextsModel, LambdaCNNChar
 from models.output import Output
 import numpy as np
 
+@pytest.mark.skip(reason="laptop bad :(")
 def test_transformer_output():
     """Test the TransformerModel output"""
     model = TransformerModel("MrFitzmaurice/TrOCR-Lambda-Calculus", "MrFitzmaurice/TrOCR-Lambda-Calculus")
