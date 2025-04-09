@@ -77,11 +77,59 @@ class LinePreprocessor(Preprocessor):
             return lines
 
         # essentially indents←(+\e<0,¯2-/o[⍋o])[⍋⍋o]
-        e        = image.shape[1] / 20                      # less then e difference in offsets => same indentation
-        i        = np.argsort(offsets)                      # i←⍋offsets
-        increase = np.insert(np.diff(offsets[i]), 0, 0) > e # increase←e<0,¯2-⌿offsets[i]
-        indents  = np.cumsum(increase)[np.argsort(i)]       # indents←(+\increase)[⍋i]
-        indents  = [it.item() for it in indents]            # return to normal python array
+        e        = image.shape[1] / 20                          # less then e difference in offsets => same indentation
+        i        = np.argsort(offsets)                          # i is the indices to sort offsets, so offsets[i] is sorted
+        increase = np.insert(np.diff(offsets[i]) > e, 0, False) # increase[j] is (offsets[i][j] - offsets[i][j - 1] > e) (and increase[0] is 0)
+        indents  = np.cumsum(increase)[np.argsort(i)]           # cumsum(increase) tells us which level of indentation a line is in, then [argsort(i)] undoes the sort
+        indents  = [it.item() for it in indents]                # return to normal python array
+
+        '''
+        indentation inference example:
+        say
+
+            offsets = [0, 5, 10, 6, 11, 1]:
+
+        which you might see from writing that looks like
+
+            foo
+                 bar
+                      baz
+                  goo
+                       hoo
+             moo
+
+        and say e is 2. then i is the indices which sorts offsets, so
+
+            i = [0, 5, 1, 3, 2, 4]
+
+        note then that
+
+            offsets[i] = [0, 1, 5, 6, 10, 11]
+
+        we can see that the offsets for each indentation level are grouped together.
+        if we look at the pairwise differences from one to the next
+
+            diff(offsets[i]) = [1, 4, 1, 4, 1]
+
+        theres a big jump when we move from one indentation level to the next, which
+        we can detect by comparing against e
+
+            diff(offsets[i]) > e = [False, True, False, True, False]
+
+        the least indented line is not be further indented than others, so we just
+        stick a false on the beginning
+
+            increases = insert(diff(offsets[i]) > e, 0, False)
+                      = [False, False, True, False, True, False]
+
+        each line is then indented by the number of jumps before it
+
+            cumsum(increases) = [0, 0, 1, 1, 2, 2]
+
+        indeed, there are two lines not indented, two lines indented by one, and two
+        indented by 2. now we just need to undo the sorting to get these back in the
+        right places.
+        '''
 
         return (lines, indents)
 
