@@ -67,3 +67,21 @@ def test_line_invalid_shape():
     # Simulate an invalid line in the image
     with pytest.raises(ValueError):
         preprocessor.preprocess(image, indentation = True)
+
+def test_indentation_inference():
+    """Test the indentation detection of the LinePreprocessor"""
+    preprocessor = LinePreprocessor()
+    image = 255 * np.ones(
+        (500, 500),
+        dtype = np.ubyte
+    )
+    image[50:100,  10:450] = 0
+    image[150:200, 50:450] = 0
+    image[250:300, 101:450] = 0
+    image[350:400, 13:450] = 0
+    assert (
+        [it for (it, _, _) in preprocessor.preprocess(image, indentation = True)]
+        ==
+        ['', '\t', '\t\t', '']
+    )
+
