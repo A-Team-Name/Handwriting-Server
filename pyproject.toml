@@ -17,6 +17,7 @@ torchaudio = "^2.5.1"
 onnxruntime = "^1.20.1"
 gunicorn = "^23.0.0"
 numpy = "^2.2.2"
+pytest = "^8.3.5"
 
 
 [tool.poetry.group.dev.dependencies]
