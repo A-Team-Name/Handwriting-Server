@@ -66,7 +66,6 @@ class LinePreprocessor(Preprocessor):
             start, end = components[i]
             line = image[start : end + 1]
             lines.append(line)
-            print(line[0, [0, 1, 2, 3, 4, 5]])
             if indentation:
                 offsets[i] = (np.logical_not(line)
                     .sum(axis = 0)

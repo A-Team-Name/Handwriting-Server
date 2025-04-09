@@ -39,7 +39,6 @@ class Inferer:
 
         if indentation:
             inputs, indents = self.preprocessor.preprocess(img, indentation)
-            print(indents)
         else:
             inputs = self.preprocessor.preprocess(img, indentation)
 
