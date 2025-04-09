@@ -77,11 +77,12 @@ class LinePreprocessor(Preprocessor):
         if not indentation:
             return lines
 
-        e = image.shape[1] / 20                             # less then e difference in offsets => same indentation
-        i = np.argsort(offsets)                             # i←⍋offsets
-        increase = np.insert(np.diff(offsets[i]), 0, 0) > e # increase←e<¯2-⌿offsets[i]
-        indents = np.cumsum(increase)[np.argsort(i)]        # indents←(+\increase)[⍋i]
-        indents = [it.item() for it in indents]             # return to normal python array
+        # essentially indents←(+\e<0,¯2-/o[⍋o])[⍋⍋o]
+        e        = image.shape[1] / 20                      # less then e difference in offsets => same indentation
+        i        = np.argsort(offsets)                      # i←⍋offsets
+        increase = np.insert(np.diff(offsets[i]), 0, 0) > e # increase←e<0,¯2-⌿offsets[i]
+        indents  = np.cumsum(increase)[np.argsort(i)]       # indents←(+\increase)[⍋i]
+        indents  = [it.item() for it in indents]            # return to normal python array
 
         return (lines, indents)
 
