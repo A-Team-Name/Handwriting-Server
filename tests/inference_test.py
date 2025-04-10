@@ -13,7 +13,7 @@ import numpy as np
 def mock_preprocessor():
     """Mock preprocessor"""
     preprocessor = MagicMock()
-    preprocessor.preprocess.return_value = [np.ones((128, 128), dtype=np.ubyte) * 255] * 5
+    preprocessor.preprocess.return_value = [('', np.ones((128, 128), dtype=np.ubyte) * 255, '')] * 5
     return preprocessor
 
 def mock_model():

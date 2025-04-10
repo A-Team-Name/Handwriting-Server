@@ -12,14 +12,12 @@ from models.preprocessors import LinePreprocessor, CharPreprocessor
 
 from torch import cuda
 
-print("Startup")
-
 app = Flask(__name__)
 
 models = {
-    "shape-lambda-calculus": lambda : Inferer(ShapeContextsModel(), LinePreprocessor()),
-    "cnn-lambda-calculus": lambda : Inferer(LambdaCNNChar(), CharPreprocessor()),
-    "trocr-lambda-calculus": lambda : Inferer(
+    "shape-lambda-calculus": lambda: Inferer(ShapeContextsModel(), LinePreprocessor()),
+    "cnn-lambda-calculus":   lambda: Inferer(LambdaCNNChar(),      CharPreprocessor()),
+    "trocr-lambda-calculus": lambda: Inferer(
         TransformerModel("MrFitzmaurice/TrOCR-Lambda-Calculus", "MrFitzmaurice/TrOCR-Lambda-Calculus"),
         LinePreprocessor()
     )
@@ -62,14 +60,13 @@ def convert_to_text():
         return jsonify({"error": "Model not recognized"}), 400
     img = np.asarray(Image.open(file).convert("L"))
 
-    response: Output = live_model.process_image(img)
+    response: Output = live_model.process_image(img, indentation = True)
     
     response_dict = {
         "top_preds": response.top_preds,
         "top_probs": response.top_probs,
         "model": live_model_name,
     }
-
     return jsonify(response_dict)
 
 @app.route("/test", methods=["GET"])
