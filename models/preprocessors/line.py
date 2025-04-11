@@ -24,14 +24,7 @@ class LinePreprocessor(Preprocessor):
     ) -> list[tuple[str, npt.NDArray[np.ubyte], str]]:
         """
         Line separation using naive connected component analysis on columns.
-
-        Args:
-            image (npt.NDArray[np.ubyte]): The image to preprocess.
-            indentation (bool):            Whether to infer indentation
-
-        Returns:
-            list[tuple[str, npt.NDArray[np.ubyte], str]]: The preprocessed images and their separating strings (newlines and indentation)
-
+        ```
         >>> processor = LinePreprocessor()
         >>> test_img = np.array([[1,1,1,1,1],[1,1,1,1,1,],[1,0,0,0,1],[1,0,1,1,1],[1,1,1,1,1],[1,0,1,0,1],[1,1,1,1,1]])
         >>> processor.preprocess(test_img)
@@ -41,6 +34,14 @@ class LinePreprocessor(Preprocessor):
                [1, 1, 1, 1, 1]]), array([[1, 1, 1, 1, 1],
                [1, 0, 1, 0, 1],
                [1, 1, 1, 1, 1]])]
+        ```
+
+        Args:
+            image (npt.NDArray[np.ubyte]): The image to preprocess.
+            indentation (bool):            Whether to infer indentation
+
+        Returns:
+            list[tuple[str, npt.NDArray[np.ubyte], str]]: The preprocessed images and their separating strings (newlines and indentation)
         """
         # collapse each row to be min of row
         min_col = np.min(image, axis=1)
