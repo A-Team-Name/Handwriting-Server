@@ -1,0 +1,17 @@
+site_name: Handwriting Server Documentation
+
+theme:
+  name: "material"
+
+nav:
+  - Overview: index.md
+  - API: api.md
+  - Models:
+    - Inference: inference.md
+    - Preprocessing: preprocessing.md
+    - Models: models.md
+
+plugins:
+  - monorepo
+  - mkdocstrings
+
