@@ -114,26 +114,59 @@ class CharPreprocessor(LinePreprocessor):
             c = np.sort(np.unique(s))
             s = np.searchsorted(c, s).reshape([h, w])
             glyphs = []
+            gaps = []
             for e in range(1, len(c)):
                 i = np.argwhere(s == e)
                 min_y, min_x = i.min(axis = 0)
                 max_y, max_x = i.max(axis = 0)
+
                 glyphs.append((
                     min_x,
                     max_x,
                     255 * np.logical_not(e == s[min_y : max_y + 1, min_x : max_x + 1]),
                 ))
             glyphs.sort()
+            for i in range(len(glyphs) - 1):
+                gaps.append(glyphs[i + 1][0] - glyphs[i][1])
+                
             glyphs = [glyph[2] for glyph in glyphs]
 
             # pad each glyph with a border of 1 pixel
             for i in range(len(glyphs)):
                 glyphs[i] = np.pad(glyphs[i], ((1, 1), (1, 1)), constant_values = 255)
+                
+            threshold = CharPreprocessor._get_space_threshold(gaps)
+            prefix_space = [' ' if gap > threshold else '' for gap in gaps]
+                
+            return_glyphs = []
+            for i in range(len(glyphs)):
+                if i > 0:
+                    return_glyphs.append((prefix_space[i-1], glyphs[i], ''))
+                else:
+                    return_glyphs.append(('', glyphs[i], ''))
 
-            glyphs = [('', glyph, '') for glyph in glyphs]
-            glyphs[ 0] = (prefix,        glyphs[ 0][1], glyphs[0][2])
-            glyphs[-1] = (glyphs[-1][0], glyphs[-1][1], suffix)
+            return_glyphs[ 0] = (prefix,        return_glyphs[ 0][1], return_glyphs[0][2])
+            return_glyphs[-1] = (return_glyphs[-1][0], return_glyphs[-1][1], suffix)
 
-            output += glyphs
+            output += return_glyphs
 
         return output
+    
+    @staticmethod
+    def _get_space_threshold(gaps: list[int], percentile: float = 0.95) -> int:
+        """
+        Get the threshold for a space.
+        This is the percentile of the gaps between glyphs.
+        The threshold is used to determine whether a gap is a space or not.
+
+        Args:
+            gaps (list[int]): The gaps between glyphs.
+            percentile (float): The percentile to use for the threshold.
+
+        Returns:
+            int: The threshold for a space.
+        """
+        if len(gaps) == 0: return 0
+        sorted_gaps = sorted(gaps)
+        threshold = int(np.percentile(sorted_gaps, percentile * 100))
+        return threshold
