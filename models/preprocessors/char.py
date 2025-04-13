@@ -158,11 +158,10 @@ class CharPreprocessor(LinePreprocessor):
     def _get_space_threshold(gaps: list[int], threshold: float) -> int:
         """
         Get the threshold for a space.
-        First calculates the mean of the gaps, then multiplies it by the multiplier.
 
         Args:
             gaps (list[int]): The gaps between glyphs.
-            multiplier (float): The multiplier for the mean.
+            threshold (float): The minimum threshold required in difference between gaps to be considered a space.
 
         Returns:
             int: The threshold for a space.
