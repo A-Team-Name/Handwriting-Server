@@ -74,12 +74,12 @@ class CharPreprocessor(LinePreprocessor):
             c = np.sort(np.unique(s))                        # roots
             s = np.searchsorted(c, s)                        # ids
 
-            min = np.zeros(len(c) - 1)                       #  leftmost pixel indices
-            max = np.zeros(len(c) - 1)                       # rightmost pixel indices
+            min_indices = np.zeros(len(c) - 1)                       #  leftmost pixel indices
+            max_indices = np.zeros(len(c) - 1)                       # rightmost pixel indices
             for e in range(1, len(c)):                       # fill those bad boys in
                 i = np.argwhere(s == e).ravel() % w
-                min[e - 1] = i.min()
-                max[e - 1] = i.max()
+                min_indices[e - 1] = i.min()
+                max_indices[e - 1] = i.max()
 
             # adjacency matrix where x → y if min(x) ≥ min(y) and (max(x) ≤ max(y) or min(x) ≤ min(y) + (max(y) - min(y))/2)
             # │# #        (  # #│       # #  )
@@ -91,10 +91,10 @@ class CharPreprocessor(LinePreprocessor):
             # ││# #       ( # #││       │# # )
             # x is either contained in the bounds of y, or, if it goes far right of y, sunk far enough into the left of y
             b = np.logical_and(
-                np.greater_equal.outer(min, min),
+                np.greater_equal.outer(min_indices, min_indices),
                 np.logical_or(
-                    np.less_equal.outer(max, max),
-                    np.less_equal.outer(min, min + 0.5 * (max - min)),
+                    np.less_equal.outer(max_indices, max_indices),
+                    np.less_equal.outer(min_indices, min_indices + 0.5 * (max_indices - min_indices)),
                 ),
             )
             b = np.logical_or(b, b.T) # make undirected, now x ←→ y if at least one one overlaps the other
@@ -129,14 +129,16 @@ class CharPreprocessor(LinePreprocessor):
             for i in range(len(glyphs) - 1):
                 gaps.append(glyphs[i + 1][0] - glyphs[i][1])
                 
+            max_width = max([glyph[1] - glyph[0] for glyph in glyphs])
+                
             glyphs = [glyph[2] for glyph in glyphs]
 
             # pad each glyph with a border of 1 pixel
             for i in range(len(glyphs)):
                 glyphs[i] = np.pad(glyphs[i], ((1, 1), (1, 1)), constant_values = 255)
                 
-            threshold = CharPreprocessor._get_space_threshold(gaps)
-            prefix_space = [' ' if gap > threshold else '' for gap in gaps]
+            threshold = CharPreprocessor._get_space_threshold(gaps, threshold = max_width * 0.7)
+            prefix_space = [' ' if gap >= threshold else '' for gap in gaps]
                 
             return_glyphs = []
             for i in range(len(glyphs)):
@@ -153,20 +155,24 @@ class CharPreprocessor(LinePreprocessor):
         return output
     
     @staticmethod
-    def _get_space_threshold(gaps: list[int], percentile: float = 0.95) -> int:
+    def _get_space_threshold(gaps: list[int], threshold: float) -> int:
         """
         Get the threshold for a space.
-        This is the percentile of the gaps between glyphs.
-        The threshold is used to determine whether a gap is a space or not.
+        First calculates the mean of the gaps, then multiplies it by the multiplier.
 
         Args:
             gaps (list[int]): The gaps between glyphs.
-            percentile (float): The percentile to use for the threshold.
+            multiplier (float): The multiplier for the mean.
 
         Returns:
             int: The threshold for a space.
         """
-        if len(gaps) == 0: return 0
+        if len(gaps) == 0 or len(gaps) == 1:
+            return 0
+        
         sorted_gaps = sorted(gaps)
-        threshold = int(np.percentile(sorted_gaps, percentile * 100))
-        return threshold
+        differences = np.diff(sorted_gaps)
+        largest_diff_index = np.argmax(differences) + 1
+        gap_lower_bound = sorted_gaps[largest_diff_index] if differences[largest_diff_index - 1] > threshold else sorted_gaps[-1] + 1
+        
+        return gap_lower_bound
