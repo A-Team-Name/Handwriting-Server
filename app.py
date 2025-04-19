@@ -7,7 +7,7 @@ from PIL import Image
 
 from models import Inferer
 from models.output import Output
-from models.models import ShapeContextsModel, LambdaCNNChar, TransformerModel
+from models.models import ShapeContextsModel, APLCNNChar, LambdaCNNChar, PythonCNNChar, TransformerModel
 from models.preprocessors import LinePreprocessor, CharPreprocessor
 
 from torch import cuda
@@ -16,9 +16,17 @@ app = Flask(__name__)
 
 models = {
     "shape-lambda-calculus": lambda: Inferer(ShapeContextsModel(), LinePreprocessor()),
+    "shape-python3": lambda: Inferer(ShapeContextsModel(), LinePreprocessor()),
+    "shape-dyalog_apl": lambda: Inferer(ShapeContextsModel(), LinePreprocessor()),
     "cnn-lambda-calculus":   lambda: Inferer(LambdaCNNChar(),      CharPreprocessor()),
+    "cnn-python3":   lambda: Inferer(PythonCNNChar(),      CharPreprocessor()),
+    "cnn-dyalog_apl":   lambda: Inferer(APLCNNChar(),      CharPreprocessor()),
     "trocr-lambda-calculus": lambda: Inferer(
         TransformerModel("MrFitzmaurice/TrOCR-Lambda-Calculus", "MrFitzmaurice/TrOCR-Lambda-Calculus"),
+        LinePreprocessor()
+    ),
+    "trocr-dyalog_apl": lambda: Inferer(
+        TransformerModel("MrFitzmaurice/TrOCR-APL", "MrFitzmaurice/TrOCR-APL"),
         LinePreprocessor()
     )
 }
