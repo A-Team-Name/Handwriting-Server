@@ -85,3 +85,25 @@ def test_indentation_inference():
         ['', '\t', '\t\t', '']
     )
 
+def test_space_inference():
+    """Test the space detection of the CharPreprocessor"""
+    preprocessor = CharPreprocessor()
+    image = 255 * np.ones(
+        (500, 500),
+        dtype = np.ubyte
+    )
+    image[50:100,  10:30] = 0
+    image[50:100,  40:70] = 0
+    image[50:100,  80:100] = 0
+    image[50:100,  150:170] = 0
+    image[50:100,  180:200] = 0
+    image[50:100,  250:260] = 0
+    
+    result = preprocessor.preprocess(image, indentation = True)
+    print(result)
+    
+    assert (
+        [it for (it, _, _) in preprocessor.preprocess(image, indentation = True)]
+        ==
+        ['', '', '', ' ', '', ' ']
+    )
