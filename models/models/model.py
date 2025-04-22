@@ -19,4 +19,4 @@ class Model:
         Returns:
             Output: The output of the model (top_preds, top_probs)
         """
-        pass
+        assert False, "predict method not implemented in model class"
