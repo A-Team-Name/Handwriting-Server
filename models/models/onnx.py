@@ -52,10 +52,10 @@ class OnnxModel(Model):
         softmax_ordered = self.model.run(
             output_names,
             {input_name: np_img}
-        )[0]
+        )
         
-        top_preds = softmax_ordered[:self.top_preds, 0]
-        top_pred_probs = softmax_ordered[:self.top_preds, 1]
+        top_preds = softmax_ordered[0][0, :self.top_preds]
+        top_pred_probs = softmax_ordered[1][0, :self.top_preds]
         
         if len(top_preds.shape) == 1:
             top_preds = top_preds.reshape(1, -1)

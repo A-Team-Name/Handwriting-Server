@@ -7,7 +7,7 @@ import numpy as np
 import numpy.typing as npt
 import os
 
-class LambdaCNNChar(OnnxModel):
+class APLCNNChar(OnnxModel):
     """
     Hello World Model. Simply outputs "hello.world" for all inputs
 
@@ -19,7 +19,7 @@ class LambdaCNNChar(OnnxModel):
         Initialize the Hello World Model by specifying the path to the ONNX model file
         """
         current_dir = os.path.dirname(__file__)
-        model_path = os.path.join(current_dir, 'onnx/CNN_LC.onnx')
+        model_path = os.path.join(current_dir, 'onnx/CNN_APL.onnx')
         super().__init__(model_path)
         
     def predict(self, img: npt.NDArray[np.ubyte]):
