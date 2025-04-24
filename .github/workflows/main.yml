@@ -48,10 +48,11 @@ jobs:
         with:
           repository: A-Team-Name/docs
           token: ${{ secrets.WRITE_TOKEN }}
+          submodules: true
       - name: update submodules
-        run: git submodule update --init --recursive
-        env:
-          GITHUB_TOKEN: ${{ secrets.WRITE_TOKEN }}
+        run: |
+          git submodule update --init --recursive
+          git submodule update --recursive --remote
       - name: Push to main branch
         run: |
           git config --global user.name "GitHub Action"
@@ -59,8 +60,6 @@ jobs:
           git add -A
           git commit -m "Update docs" || echo "No changes to commit"
           git push origin main
-        env:
-          GITHUB_TOKEN: ${{ secrets.WRITE_TOKEN }}
 
   build:
     needs: test
