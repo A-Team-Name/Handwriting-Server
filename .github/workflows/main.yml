@@ -35,6 +35,28 @@ jobs:
         run: |
           poetry run python -m pytest -v --disable-warnings --tb=short
 
+  docs:
+    needs: test
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    permissions:
+        contents: write
+        pages: write
+    steps:
+      - name: Checkout docs code
+        uses: actions/checkout@v4
+        with:
+          repository: A-Team-Name/docs
+      - name: update submodules
+        run: git submodule update --init --recursive
+      - name: Push to main branch
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+          git add -A
+          git commit -m "Update docs" || echo "No changes to commit"
+          git push origin main
+
   build:
     needs: test
     if: github.event_name == 'push'
