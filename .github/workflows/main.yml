@@ -35,7 +35,7 @@ jobs:
         run: |
           poetry run python -m pytest -v --disable-warnings --tb=short
 
-  docs:
+  docs_update:
     needs: test
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
