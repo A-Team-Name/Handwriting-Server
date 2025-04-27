@@ -3,18 +3,20 @@
 
 'dec' 'disp' 'displays'⎕CY'dfns'
 'assign'⎕CY'dfns'
-⍝ ascii - `"` + `˙` + `λ` + apl/bqn specials
-⍝ cs←'!#$%&''()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~˙λ∇⋄⍝⍺⍵¯×÷←↑→↓∆∊∘∧∨∩∪≠≡≢≤≥⊂⊃⊆⊖⊢⊣⊤⊥⌈⌊⌶⌷⎕⌸⌹⌺⌽⌿⍀⍉⍋⍎⍒⍕⍙⍟⍠⍣⍤⍥⍨⍪⍬⍱⍲⍳⍴⍷⍸○⍬⊇⍛⍢⍫√'
-cs←'λ.()abcdefghijklmnopqrstuvwxyz'
-Atan2←12○⊣+0J1×⊢ ⍝ x Atan2 y | https://aplcart.info?q=atan2
 
-input←⎕JSON⎕OPT'Dialect' 'JSON5'⊃⎕NGET'shape-contexts.json5'
+Atan2←12○⊣+0J1×⊢ ⍝ x Atan2 y | https://aplcart.info?q=atan2
+_tr←{⍵⊣⎕←⍺⍺ ⍵}   ⍝ logging, eg ⍴_tr
+Atan←{ ⍝ x Atan y
+	⎕DIV←1
+	+∘(○0>⊢)⍨¯3○(○.5)@(⍺=0⍨)⍵÷⍺
+}
 
 Load←{
-	⍝ ⍵: ⍬
+	⍝ ⍺: input shape
+	⍝ ⍵: input path
 	⍝ ←: bitarray
 	tie←⍵ ⎕NTIE 0
-	data←0≤(input.size⍴⎕NREAD tie 83 ¯1)
+	data←0≤(⍺⍴⎕NREAD tie 83 ¯1)
 	_←⎕NUNTIE tie
 	data
 }
@@ -130,10 +132,9 @@ Distribute←{
 DistributeOverCurves←{
 	⍝ ⍺: number of points to distribute
 	⍝ ⍵: curve set with shape 2 (x y) × 3 (start control end) × n (curves)
-	⍝ ←: (a b c) where
+	⍝ ←: (a b) where
 	⍝    a: points matrix with shape 2 (x y) × ⍺
 	⍝    b: angles vector with shape ⍺
-	⍝    c: number of contours
 
 	⍺←100
 	⍝ https://raphlinus.github.io/curves/2018/12/28/bezier-arclength.html
@@ -153,44 +154,20 @@ DistributeOverCurves←{
 	b ←       +⌿⍤2⊢t×⍤2⊢⍵[;1 2;]
 	xy←(⊃,/)⍤1+⌿⍤2⊢t×⍤2⊢1 0 2⍉↑a b
 	⍝ B'(t) = 2(1-t)(P1-P0)+2t(P2-P1)
-	m←+∘(○0>⊢)⍨Atan2⌿+⌿⍤2(⊃,/)⍤1⊢t×⍤2⊢2×¯2-⌿⍤2⊢⍵ ⍝ normalised to >0
-	xy m (2⊃⍴⍵)
-}
-
-Contexts←{
-	⍝ ⍺[0]: number of distance bins
-	⍝ ⍺[1]: number of angle bins
-	⍝ ⍵: points matrix with shape 2 (x y) × n
-	⍝ ←: n×⍺[0]×⍺[1] array of shape contexts
-
-	⍺←5 12
-	(rb tb)←⍺
-	⍝ potential optimisation: only do triangle
-	⍝ TODO: eliminate self
-	d←-⍨⍤0 1⍨⍤1⊢⍵ ⍝ TODO: this can just be a ∘.-⍨⍤1 no?
-	r←⍟(⊢∨0=⊢).5*⍨+⌿×⍨d
-	t←Atan2⌿d
-	i  ←1+r⍸⍨(⌈/∊r)×(⍳÷   ⊢)rb-1
-	i,¨←  t⍸⍨○¯1+   (⍳÷.5×⊢)tb
-	{
-		h←rb tb⍴0
-		h[⍵]+←1
-		h
-	}⍤1⊢i
+	m←Atan⌿+⌿⍤2(⊃,/)⍤1⊢t×⍤2⊢2×¯2-⌿⍤2⊢⍵
+	xy m
 }
 
 EdgePoints←{
 	⍝ ⍺: number of edgepoints to pick (default 100)
 	⍝    if ⍺ > points in the image, there will be duplicate points
 	⍝ ⍵: bit array to find edgepoints on
-	⍝ ←: (a b c) where
+	⍝ ←: (a b) where
 	⍝    a: points matrix with shape 2 (x y) × ⍺⋯)
 	⍝    b: angles vector with shape ⍺
-	⍝    c: number of contours
 
 	⍺←100
 
-	⍝ ⍝ potential improvement: also check diagonal corners so we have more points
 	⍝ p←1 ¯1×⍤0 1⍉⌽↑⍸⍵∧⊃∨/⍵∘≠¨(1⊖⍵) (¯1⊖⍵) (1⌽⍵) (¯1⌽⍵)
 	⍝ ⍺>1⊃⍴p: p
 	⍝ p[;{⍵[⍋⍵]}⍺?1⊃⍴p]
@@ -201,77 +178,161 @@ EdgePoints←{
 	c←⍬                  ⍝ contours list
 	ci←¯1+0×b            ⍝ contours list indices
 	pi←2(⊢,¨⌽)1(⊢+⌽)3<⍳8 ⍝ indices of perimeter of the square
-	_←{
-		⍺←{ ⍝ current contour (create if none)
-			a←⍵⌷ci
-			a≠¯1: a
-			c,←⊂2 0⍴⍬
-			¯1+≢c
+	_←{                  ⍝ for each point
+		¯1≠⍵⌷ci: 1       ⍝ if this point has already been assigned a contour, continue
+		⍺←{              ⍝ current contour (create if none)
+			c,←⊂2 0⍴⍬    ⍝ add new contour
+			¯1+≢c        ⍝ index in c of new contour
 		}⍵
-		(⍺⊃c),←⍪⍵
+		(⍺⊃c),←⍪⍵        ⍝ add this point to the current contour
 		(i j)←⍵
-		ci[i;j]←⍺
+		ci[i;j]←⍺        ⍝ mark it on the matrix
 		(i j)←⍵+¯1+pi⊃⍨8|1+⊃⍸2</9⍴b[¯1 0 1+i;¯1 0 1+j][pi] ⍝ indices of the next point
-		ci[i;j]≠¯1: ⍺ ⍝ loop complete
-		⍺∇i j         ⍝ continue on next point around the curve, tco babyy
+		ci[i;j]≠¯1: ⍺    ⍝ loop complete
+		⍺∇i j            ⍝ continue on next point around the curve, tco babyy
 	}¨p
 	c←c{⍺[;⌊⍵÷⍨(1⊃⍴⍺)×⍳⍵]}¨⍺ Distribute (1⊃⍴)¨c ⍝ pick points from contour
-	c←{1 ¯1×⍤0 1⊖⍵}¨c ⍝ i j → x y
+	c←{0 (⌈/⍵[0;])+⍤0 1⊢1 ¯1×⍤0 1⊖⍵}¨c ⍝ i j → x y
 	m←{
 		n←1⊃⍴⍵
 		n<3: n⍴0 ⍝ not enough points to get gradients
-		+∘(○0>⊢)⍨Atan2⌿-/⍵[;n|(⍳n)∘.+¯1 1]
+		Atan⌿-/⍵[;n|(⍳n)∘.+¯1 1]
 	}¨c
-	(⊃,/c) (⊃,/m) (≢c)
+	(⊃,/c) (⊃,/m)
 }
 
-⍝ ⎕←'import matplotlib.pyplot as plt'
-⍝ {
-⍝ 	⎕←'plt.scatter('
-⍝ 	⎕←'[0-9-,.]+'⎕R'[&],'⊢⍵⎕CSV⊂''
-⍝ 	⎕←')'
-⍝ 	⎕←'plt.show()'
-⍝ }¨100 DistributeOverCurves¨ Loot ⍬
 
-time←¯1 20⎕dt⊂⎕ts
-Log←{⎕←(30↑⍵) (time-⍨¯1 20⎕DT⊂⎕TS)}
-
-npoints←100
-bins←5 12
-sh←npoints,npoints,bins
-font ←npoints DistributeOverCurves¨ Loot ⍬
-input←npoints EdgePoints¨           Split Load input.path
-⍝ Log 'done getting points'
-Cost←{
-	⍝ ⍞←'*'
-	contexts←⍺{.5×+/+/(1 0 2 3⍉sh⍴⍺)(×⍨⍤-÷+)sh⍴⍵}⍥(bins∘Contexts⊃)⍵
-	angles←|⍺∘.-⍥(1∘⊃)⍵
-	c←0.9 0.1(⊃+.×)(⊢÷⌈/⍣2)¨contexts angles
-	⍝ +/+/c×assign c ⍝ everybody say thank you John Scholes
-	⍝ greedy matching (sacrifice accuracy for speed)
-	+/{
-		i←(⊢⍳⌊/),c
-		j←⌊i÷1⊃⍴c
-		k←i|⍨1⊃⍴c
-		w←c[j;k]
-		c⌿⍨←~(0⊃⍴c)↑⍸⍣¯1,j
-		c/⍨←~(1⊃⍴c)↑⍸⍣¯1,k
-		w
-	}¨⍳≢c
+ContextsPreprocess←{
+	(rb tb)←⍺
+	(xy a) ←⍵
+	d←∘.-⍨⍤1⊢xy                        ⍝ x-x and y-y differences
+	r←↓.5*⍨+⌿×⍨d                       ⍝ distances
+	m←r>0                              ⍝ mask(s) of points that are different
+	r←⍟m/¨r                            ⍝ filter r and log
+	t←m/¨↓Atan2⌿d                      ⍝ angles (filtered)
+	(max min)←(⌈/,⌊/)∊r
+	(a r t m max min)                  ⍝─┐
+}                                      ⍝ │
+                                       ⍝ │
+ContextsHistogram←{                    ⍝ │
+	(rb tb)←⍺                          ⍝ │
+	(a r t m max min)←⍵                ⍝←┘
+	i   ←r⍸⍨¨⊂min+(max-min)×(⍳÷   ⊢)rb ⍝ bin distances
+	i,¨¨←t⍸⍨¨⊂          ○¯1+(⍳÷.5×⊢)tb ⍝ bin angles
+	F←{
+		h←rb tb⍴⊂0 0                   ⍝ blank histogram
+		h[⍺]+←↓⍵∘.(○⍨)1 2              ⍝ sum unit vectors in each bin
+		(⊢÷.5*⍨+.×⍨)∊h                 ⍝ into vector and normalise
+	}
+	↑i F¨m/¨⊂a
 }
-⍝ cost←.1 .9(⊃+.×)(⊢÷⌈/⍣2)¨(|input∘.-⍥(2∘⊃¨)font)(input ∘.Cost font)
-cost←input ∘.Cost font
-⍝ Log 'done matching'
 
-⍝ (⍪'{(+⌿⍵)÷≢⍵}'),' ',
-⎕←⍉cs[(10↑⍋)⍤1⊢cost]
+Contexts←{
+	⍝ ⍺[0]: number of distance bins
+	⍝ ⍺[1]: number of angle bins
+	⍝ ⍵: length m vector of pairs (a b) where
+	⍝    a: points matrix with shape 2 (x y) × n
+	⍝    b: angles vector with shape n
+	⍝ ←: m×n×⍺[0]×⍺[1] array of shape contexts
+
+	⍝ the contexts calculations are divided into two stages
+	⍝ because we need to collect the min and max distances
+	⍝ across all glyphs
+	pp←⍺∘ContextsPreprocess¨⍵     ⍝ get the preprocessed values
+	pp←(¯2↓¨pp),¨{(⌈/⍺),(⌊/⍵)}/↓⍉↑¯2↑¨pp ⍝ get max and min across all glyphs
+	↑⍺∘ContextsHistogram¨pp       ⍝ continue
+}
+
+ 
+⍝ logging utils
+time←¯1 12⎕DT⊂⎕TS
+Log←{⎕←(30↑⍵) (1000÷⍨time-⍨¯1 12⎕DT⊂⎕TS)}
+
+⍝ obtain shape contexts
+np  ←100   ⍝ number of points to sample from the edges of a shape
+bins←5 12  ⍝ number of radial and angle bins
+input←⎕JSON⎕OPT'Dialect' 'JSON5'⊃⎕NGET'shape-contexts.json5' ⍝ input specification
+cs←{
+	⍵≡'lc':  'λ.()abcdefghijklmnopqrstuvwxyz'
+	⍵≡'apl': '!#$%&''()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~˙∇⋄⍝⍺⍵¯×÷←↑→↓∆∊∘∧∨∩∪≠≡≢≤≥⊂⊃⊆⊖⊢⊣⊤⊥⌈⌊⌶⌷⎕⌸⌹⌺⌽⌿⍀⍉⍋⍎⍒⍕⍙⍟⍠⍣⍤⍥⍨⍪⍬⍱⍲⍳⍴⍷⍸○⍬⊇⍛⍢⍫√'
+	⍝ (ascii - `"` + `˙` + apl/bqn specials)
+}input.alphabet
+
+⍝ (coords bearings) for each glyph
+ fontPoints←np DistributeOverCurves¨ Loot ⍬
+inputPoints←np EdgePoints¨           Split input.size Load input.path
+
+VisualisePoints←{
+	(xy m)←⍺⊃⍵
+	py←'import matplotlib.pyplot as plt;'
+	_←(⍉xy){py,←'plt.quiver(',(⍕0⊃⍺),',',(⍕1⊃⍺),',',(⍕2○⍵),',',(⍕1○⍵),');'}⍤1 0⊢m
+	py,←'plt.show()'
+	⎕SH 'python3 -c ''',('¯'⎕R'-'⊢py),''''
+}
+
+⍝ 0 VisualisePoints fontPoints
+⍝ 0 VisualisePoints inputPoints
+
+⍝ (nglyphs npoints bins[0] bins[1])
+ font←bins Contexts  fontPoints
+input←bins Contexts inputPoints
+
+⍝ obtain shape contexts
+nr←10               ⍝ number of representative points to select
+ns←5                ⍝ number of font glyphs to shortlist
+reps←input[;nr?np;] ⍝ filter to representative points
+
+⍝                                               SHAPE                                    NOTE
+c←↑reps∘.(↑∘.(.5*⍨+.×⍨⍤-)⍥(⊂⍤1))⍥(⊂⍤2)font ⍝ (ninputglyphs nfontglyphs nreps npoints) point-point matching costs
+d  ←⌊/c                                    ⍝ (ninputglyphs nfontglyphs nreps)         smallest d_GSC
+nu ←(≢font)÷⍨+⌿⍤2⊢d                        ⍝ (ninputglyphs nreps)                     normalisation factor N_u
+d ÷←(≢font)⌿⍤2⊢nu⍴⍨(≢reps),1 nr            ⍝ (ninputglyphs nfontglyphs nreps)         normalised distances
+k  ←⌊nr÷2                                  ⍝                                          number of RSCs to consider
+d  ←k÷⍨+/{⍵[k↑⍋⍵]}⍤1⊢d                     ⍝ (ninputglyphs nfontglyphs)               representative distances between inputs and fonts
+i  ←(⍋↑⍨ns⌊≢)⍤1⊢d                          ⍝ (ninputglyphs nshortlist)                shortlists for each input glyph
+
+⍝ === DETAILED MATCHIING ON SHORTLIST ===
+VisualiseMatching←{
+	(j k)←⍺
+	m←⍵[j;k;;]
+	ip←⊃j⊃inputPoints
+	ip÷←⌈/⌈/ip
+	fp←⊃k⊃fontPoints[i[j;]]
+	fp÷←⌈/⌈/fp
+	py←'import matplotlib.pyplot as plt;'
+	py,←∊{
+		'plt.plot(',(∊ip[;⊃⍵]{'[',(⍕⍺),',',(⍕⍵),'],'}¨fp[;1⊃⍵]),'"g");'
+	}¨⍸m
+	py,←⊃{'plt.scatter(',⍺,',',⍵,', c = "red");'}⌿{'[',(∊',',¨⍨⍕¨⍵),']'}¨↓fp
+	py,←⊃{'plt.scatter(',⍺,',',⍵,', c = "black");'}⌿{'[',(∊',',¨⍨⍕¨⍵),']'}¨↓ip
+	py,←'plt.show()'
+	⎕SH 'python3 -c ''',('¯'⎕R'-'⊢py),''''
+}
+⍝                                                                SHAPE                                     NOTE
+c←{input[⍵;;](↑∘.(.5*⍨+.×⍨⍤-)⍥(⊂⍤1))⍤2⊢font[i[⍵;];;]}⍤0⍳≢input ⍝ (ninputglyphs nshortlist npoints npoints) point-point matching costs
+m←assign⍤2⊢c                                                   ⍝ (ninputglyphs nshortlist npoints npoints) optimal assignments
+⍝ {0 ⍵ VisualiseMatching m}¨⍳ns
+c←+/+/c×m                                                      ⍝ (ninputglyphs nshortlist)                 glyph-glyph matching costs
+⎕←⍉cs[i{⍺[⍋⍵]}⍤1⊢c]                                            ⍝ (nshortlist ninputglyphs)                 minimum cost assignments
 
 ⍝ TODO:
-⍝ - [ ] matching visualisations
+⍝ - [x] matching visualisations
 ⍝ - [x] consider difference in tangent angle between points
 ⍝ - [x] normalisation and weighting
+⍝ - [x] fast pruning with representative contexts
+⍝ - [x] round it out
+⍝ - [x] nested matching cost calculations for less wsfulls
+⍝ - [x] gsc: tangent in bins - doesn't work :wah:
+⍝ - [x] lambda calc tests
+⍝ - [x] get it installed in the handwriting server
+
+⍝ FUTURE WORK:
+⍝ - [ ] apl tests
+⍝ - [ ] basic thin-plate splines
+⍝ - [ ] regularised tps
 ⍝ - [ ] improve distribution of points over bezier curve
-⍝ - [ ] look at thin plate spline shit
-⍝ - [ ] lambda calc tests
-⍝ - [ ] more accurate angles from edgepoints (least squares)
+⍝ - [ ] more accurate angles from edgepoints (least squares?)
+⍝ - [ ] draw from more fonts
+⍝ - [ ] fast pruning with shapemes
+⍝ - [ ] gaussian windows
 
