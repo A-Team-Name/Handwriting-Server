@@ -22,8 +22,9 @@ class ShapeContextsModel(Model):
 
         with open('shape-contexts.json5', 'w') as file:
             file.write( '{\n')
-            file.write(f'    size: [{img.shape[0]}, {img.shape[1]}],\n')
-            file.write(f'    path: "img.bytes",\n')
+            file.write(f'    size:     [{img.shape[0]}, {img.shape[1]}],\n')
+            file.write(f'    path:     "img.bytes",\n')
+            file.write(f'    alphabet: "lc",\n')
             file.write( '}\n')
 
         completed_process = subprocess.run(
