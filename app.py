@@ -49,10 +49,15 @@ def convert_to_text():
             "image": image_file
         }
     
-
     Returns:
-        _type_: _description_
+        JSON response with the following structure:
+        {
+            "top_preds": [pred1, pred2, ...],
+            "top_probs": [prob1, prob2, ...],
+            "model": "model_name"
+        }
     """
+    global live_model_name, live_model
     if request.files.get("json") is None:
         return jsonify({"error": "No model provided"}), 400
     if request.files.get("image") is None:
@@ -61,10 +66,10 @@ def convert_to_text():
     model = json.loads(request.files.get("json").read().decode("utf-8"))["model"]
     file = request.files.get("image")
     
-    if model in models:
+    if model in models and model != live_model_name:
         live_model = models[model]()
         live_model_name = model
-    else:
+    elif model != live_model_name:
         return jsonify({"error": "Model not recognized"}), 400
     img = np.asarray(Image.open(file).convert("L"))
 
