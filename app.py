@@ -58,7 +58,6 @@ def convert_to_text():
         }
     """
     global live_model_name, live_model
-    print(live_model_name, flush=True)
     if request.files.get("json") is None:
         return jsonify({"error": "No model provided"}), 400
     if request.files.get("image") is None:
